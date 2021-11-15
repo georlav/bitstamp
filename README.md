@@ -1,3 +1,6 @@
+![Tests](https://github.com/georlav/bitstamp/workflows/Tests/badge.svg)
+![Golang-CI](https://github.com/georlav/bitstamp/workflows/Golang-CI/badge.svg)
+
 # Bitstamp
 An extensive client implementation of the Bitstamp API using Go.
 
@@ -96,7 +99,7 @@ go test ./... -v -race
 > **IMPORTANT:** Environmental variables override functional options.
 
 ## License
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 George Lavdanis - georlav@gmail.com

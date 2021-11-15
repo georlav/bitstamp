@@ -3,6 +3,7 @@ package bitstamp
 //go:generate go run tools/generatepairs/generatepairs.go
 //go:generate go run tools/generatechannels/generatechannels.go
 
+// nolint:deadcode,varcheck
 const (
 	// Public API urls
 	tickerURL               = `/api/v2/ticker/%s/`
