@@ -23,5 +23,5 @@ jobs:
 
       - name: Run tests
         run: |
-          go install get -v github.com/mfridman/tparse/...
+          go install github.com/mfridman/tparse/...@latest
           go test -race ./... -v -short -coverprofile=coverage.txt -covermode=atomic -json | tparse -all -notests -dump
