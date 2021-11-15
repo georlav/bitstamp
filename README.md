@@ -1,5 +1,8 @@
 # Bitstamp
-An extensive client implementation of the Bitstamp API using Go
+An extensive client implementation of the Bitstamp API using Go.
+
+## Examples
+Please check the [examples_test.go](examples_test.go) file for some basic usage examples.
 
 ## Endpoint Support
 
