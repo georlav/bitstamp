@@ -12,6 +12,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -23,6 +24,11 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/gorilla/schema"
+)
+
+var (
+	ErrKeyIsRequired    = errors.New("to be able to use private functions you need to set up an API key")
+	ErrSecretIsRequired = errors.New("to be able to use private functions you need to set up an API secret")
 )
 
 type HTTPAPI struct {
@@ -274,6 +280,13 @@ func (h *HTTPAPI) newRequest(ctx context.Context, method string, uri string, bod
 // newAuthenticatedRequest creates a http request that can be used to call private APIs
 // Docs https://www.bitstamp.net/api/#api-authentication
 func (h *HTTPAPI) newAuthenticatedRequest(ctx context.Context, method string, uri string, body io.Reader) (*http.Request, error) {
+	if h.key == "" {
+		return nil, ErrKeyIsRequired
+	}
+	if h.secret == "" {
+		return nil, ErrSecretIsRequired
+	}
+
 	u, err := url.Parse(fmt.Sprintf("%s%s", h.baseURL, uri))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse url `%s`", u)
