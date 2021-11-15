@@ -40,9 +40,21 @@ func ExampleWebsocketAPI() {
 	// subscribe to channels and start consuming messages
 	// consume should be called once per instance
 	msgCH, err := ws.Consume(ctx,
+		// You can add your needed channels
 		bitstamp.LiveTradesBTCEURChannel,
 		bitstamp.LiveTradesETHEURChannel,
 		bitstamp.LiveTradesZRXEURChannel,
+		// There are also some helpers that can be used to retrieve group of channels to batch subscribe to them
+		//
+		// bitstamp.GetAllChannels()...
+		// bitstamp.GetAllChannels()...
+		// bitstamp.GetUSDChannels()...,
+		// bitstamp.GetBTCChannels()...,
+		// bitstamp.GetGBPChannels()...,
+		// bitstamp.GetLiveTradeChannels()...,
+		// bitstamp.GetLiveOrderChannels()...,
+		// bitstamp.GetDetailOrderBookChannels()...,
+		// bitstamp.GetDiffOrderBookChannels()...,
 	)
 	if err != nil {
 		log.Fatalf("failed to subscribe to channels, %s", err)
