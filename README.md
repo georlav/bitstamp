@@ -2,7 +2,7 @@
 ![Golang-CI](https://github.com/georlav/bitstamp/workflows/Golang-CI/badge.svg)
 
 # Bitstamp
-An extensive client implementation of the Bitstamp API using Go.
+An extensive client implementation of the [Bitstamp API](https://www.bitstamp.net/api/) using Go.
 
 ## Examples
 Please check the [examples_test.go](examples_test.go) file for some basic usage examples.
