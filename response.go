@@ -23,11 +23,11 @@ type GetOrderBookResponse struct {
 
 // GetTransactionsResponse used by GetTransactions to map response
 type GetTransactionResponse struct {
-	Date   string `json:"date"`
-	Tid    string `json:"tid"`
-	Amount string `json:"amount"`
+	TID    string `json:"tid"`
 	Type   string `json:"type"`
+	Amount string `json:"amount"`
 	Price  string `json:"price"`
+	Date   string `json:"date"`
 }
 
 // GetTradingPairInfoResult used to map result of GetTradingPairsInfo method
@@ -381,8 +381,8 @@ type GetAccountBalancesResponse struct {
 	ZrxusdFee          string `json:"zrxusd_fee,omitempty"`
 }
 
-// GetUserTransactionsResponse used to map response of GetUserTransactions method
-type GetUserTransactionsResponse []struct {
+// GetUserTransactionResponse used to map response of GetUserTransactions method
+type GetUserTransactionResponse struct {
 	ID       int     `json:"id"`
 	OrderID  int     `json:"order_id"`
 	Type     string  `json:"type"`
@@ -410,9 +410,70 @@ type GetUserTransactionsResponse []struct {
 }
 
 // GetCryptoTransactionsResponse used to map response of GetCryptoTransactions method
-type GetCryptoTransactionsResponse []struct {
-	Deposits    []interface{} `json:"deposits"`
-	Withdrawals []interface{} `json:"withdrawals"`
+type GetCryptoTransactionsResponse struct {
+	Deposits []struct {
+		Currency           string `json:"currency,"`
+		DestinationAddress string `json:"destination_address,"`
+		TXID               string `json:"txid,"`
+		Ammount            string `json:"ammount,"`
+		Datetime           string `json:"datetime,"`
+	} `json:"deposits"`
+	Withdrawals []struct {
+		Currency           string `json:"currency,"`
+		DestinationAddress string `json:"destination_address,"`
+		TXID               string `json:"txid,"`
+		Ammount            string `json:"ammount,"`
+		Datetime           string `json:"datetime,"`
+	} `json:"withdrawals"`
+}
+
+// GetOpenOrderResponse used to map response of GetOpenOrders method
+type GetOpenOrderResponse struct {
+	ID           string `json:"id"`
+	Type         string `json:"type"`
+	Price        string `json:"price"`
+	CurrencyPair string `json:"currency_pair"`
+	Datetime     string `json:"datetime"`
+	Amount       string `json:"amount"`
+}
+
+// GetOpenOrderResponse used to map response of GetOpenOrders method
+type GetOrderStatusResponse struct {
+	ID           int64  `json:"id"`
+	Status       string `json:"status"`
+	Transactions []struct {
+		TID      string `json:"tid"`
+		USD      string `json:"usd"`
+		Price    string `json:"price"`
+		Fee      string `json:"fee"`
+		Btc      string `json:"btc"`
+		Datetime string `json:"datetime"`
+		// (0 - deposit; 1 - withdrawal; 2 - market trade).
+		Type string `json:"type"`
+	} `json:"transactions"`
+	AmountRemaining string `json:"amount_remaining"`
+	// Client order id. (Only returned if order was placed with client order id parameter.)
+	ClientOrderID *string `json:"client_order_id"`
+}
+
+// CancelOrderResponse used to map response of CancelOrder method
+type CancelOrderResponse struct {
+	ID     int64   `json:"id"`
+	Type   int     `json:"type"`
+	Amount float64 `json:"amount"`
+	Price  int     `json:"price"`
+}
+
+// CancelAllOrdersResponse used to map response of CancelAllOrders method
+type CancelAllOrdersResponse struct {
+	Canceled []struct {
+		ID           int64   `json:"id"`
+		CurrencyPair string  `json:"currency_pair"`
+		Type         int     `json:"type"`
+		Amount       float64 `json:"amount"`
+		Price        int     `json:"price"`
+	} `json:"canceled"`
+	Success bool `json:"success"`
 }
 
 // GetWebsocketTokenResponse use to map response of GetWebsocketToken method
@@ -421,20 +482,11 @@ type GetWebsocketTokenResponse struct {
 	ValidSeconds string `json:"valid_sec"`
 }
 
-// GetOHLCDataResponseError used to map GetOHLCData errors
-type GetOHLCDataResponseError struct {
-	Code   string `json:"code"`
-	Errors []struct {
-		Field   string `json:"field"`
-		Message string `json:"message"`
-		Code    string `json:"code"`
-	} `json:"errors"`
-}
-
 // GenericErrorResponse errors are not using a unified format trying to map them all kind of error responses at a generic object
 type GenericErrorResponse struct {
 	Reason string `json:"reason"`
-	Error  string `json:"status"`
+	Error  string `json:"error"`
+	Status string `json:"status"`
 	Code   string `json:"code"`
 	Errors []struct {
 		Field   string `json:"field"`

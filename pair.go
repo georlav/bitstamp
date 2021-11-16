@@ -131,6 +131,7 @@ const (
 	ZRXBTC
 	ZRXEUR
 	ZRXUSD
+	NILNIL
 )
 
 var pairs = map[Pair]string{
@@ -260,6 +261,7 @@ var pairs = map[Pair]string{
 	ZRXBTC:   "zrxbtc",
 	ZRXEUR:   "zrxeur",
 	ZRXUSD:   "zrxusd",
+	NILNIL:   "nilnil",
 }
 
 func (p Pair) String() string {

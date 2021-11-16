@@ -22,12 +22,12 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
   * **Private functions**
     * [x] Account balance
     * [x] User transactions
-    * [x] Crypto transactions (incomplete response model)
+    * [x] Crypto transactions
     * [x] Orders
-      * [ ] Open orders
-      * [ ] Order status
-      * [ ] Cancel order
-      * [ ] Cancel all orders
+      * [x] Open orders
+      * [x] Order status
+      * [x] Cancel order
+      * [x] Cancel all orders
       * [ ] Buy limit order
       * [ ] Buy market order
       * [ ] Buy instant order
@@ -44,7 +44,7 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
     * [ ] Cancel bank withdrawal
     * [ ] New liquidation address
     * [ ] Liquidation address info
-    * [x] Websockets token
+    * [x] WebSockets token
 
    ### Websocket API v2
 
@@ -58,7 +58,7 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
     * [ ] Live ticker
     * [ ] Live orders
 
-New pairs are constantly added so if you notice that a pair is missing you can run the following command
+New pairs are constantly added so if you notice that a pair is missing you can run the following command and open pr
 
 ```bash
 go generate ./...
@@ -71,7 +71,7 @@ To be able to use private functions you need to generate an API key and a secret
 
 Profile settings -> API access -> New API key
 
-You can pass those to the client directly using the following functional options
+You can pass those to the client using the following functional options
 ```go
 c := bitstamp.NewHTTPAPI(
 	bitstamp.APIKeyOption("yourkey"),
@@ -79,11 +79,13 @@ c := bitstamp.NewHTTPAPI(
 )
 ```
 
-Or you can just set them as environmental variables and client will automatically use them
+Or you can set them as environmental variables and client will automatically read them
 ```bash
 export BITSTAMP_KEY="yourkey"
 export BITSTAMP_SECRET="yoursecret"
 ```
+
+> **IMPORTANT:** Environmental variables override functional options.
 
 ## Running tests
 To run the integration tests for public functions use
@@ -95,8 +97,6 @@ To run all integration tests and cover also private functions you need to set yo
 ```go
 go test ./... -v -race
 ```
-
-> **IMPORTANT:** Environmental variables override functional options.
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.

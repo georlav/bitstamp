@@ -21,7 +21,7 @@ func TestHTTPClient_GetTicker(t *testing.T) {
 		},
 		{
 			description:  "Should fail to fetch info due to invalid pair",
-			input:        bitstamp.Pair(123456789),
+			input:        bitstamp.NILNIL,
 			expectedCode: http.StatusNotFound,
 		},
 	}
@@ -30,16 +30,20 @@ func TestHTTPClient_GetTicker(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetTicker(context.Background(), tc.input)
+			result, err := c.GetTicker(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
 
-			if err == nil && resp.High == "" {
+			if err == nil && result.High == "" {
 				t.Fatal("Expected to have a value for high got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -57,7 +61,7 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 		},
 		{
 			description:  "Should fail to fetch info due to invalid pair",
-			input:        bitstamp.Pair(123456789),
+			input:        bitstamp.NILNIL,
 			expectedCode: http.StatusNotFound,
 		},
 	}
@@ -66,16 +70,20 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetTickerHourly(context.Background(), tc.input)
+			result, err := c.GetTickerHourly(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
 
-			if err == nil && resp.High == "" {
+			if err == nil && result.High == "" {
 				t.Fatal("Expected to have a value for high got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -93,7 +101,7 @@ func TestHTTPClient_GetOrderBook(t *testing.T) {
 		},
 		{
 			description:  "Should fail to fetch order book due to invalid pair",
-			input:        bitstamp.Pair(123456789),
+			input:        bitstamp.NILNIL,
 			expectedCode: http.StatusNotFound,
 		},
 	}
@@ -102,19 +110,23 @@ func TestHTTPClient_GetOrderBook(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetOrderBook(context.Background(), tc.input)
+			result, err := c.GetOrderBook(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
 
-			if err == nil && len(resp.Asks) == 0 {
+			if err == nil && len(result.Asks) == 0 {
 				t.Fatal("Expected to have asks got none")
 			}
-			if err == nil && len(resp.Bids) == 0 {
+			if err == nil && len(result.Bids) == 0 {
 				t.Fatal("Expected to have bids got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -148,13 +160,18 @@ func TestHTTPClient_GetTransactions(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			result, err := c.GetTransactions(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
-				t.Fatalf("Failed to retrieve transactions for `%s` pair, %s", tc.input.pair, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
 			}
 
 			if err == nil && len(result) == 0 {
 				t.Fatal("Expected to have transactions got none")
 			}
 
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -174,14 +191,20 @@ func TestHTTPClient_GetTradingPairsInfo(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetTradingPairsInfo(context.Background())
+			result, err := c.GetTradingPairsInfo(context.Background())
 			if err != nil {
-				t.Fatalf("Failed to retrieve trading pairs information %s", err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
 			}
 
-			if len(resp) == 0 {
+			if len(result) == 0 {
 				t.Fatal("Expected to have results got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -217,24 +240,28 @@ func TestHTTPClient_GetOHLCData(t *testing.T) {
 					Step:  7200,
 				},
 			},
-			expectedCode: http.StatusNotFound,
+			expectedCode: http.StatusBadRequest,
 		},
 	}
 
-	c := bitstamp.NewHTTPAPI(bitstamp.EnableDebugOption())
+	c := bitstamp.NewHTTPAPI()
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			results, err := c.GetOHLCData(context.Background(), tc.input.pair, tc.input.request)
+			result, err := c.GetOHLCData(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve OHLC data for `%s`, %s", tc.input.pair, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
 
-			if err == nil && len(results.Data.Ohlc) != int(tc.input.request.Limit) {
-				t.Fatalf("Expected to have %d results got %d", tc.input.request.Limit, len(results.Data.Ohlc))
+			if err == nil && len(result.Data.Ohlc) != int(tc.input.request.Limit) {
+				t.Fatalf("Expected to have %d results got %d", tc.input.request.Limit, len(result.Data.Ohlc))
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -254,17 +281,23 @@ func TestHTTPClient_GetEURUSDConversionRate(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetEURUSDConversionRate(context.Background())
+			result, err := c.GetEURUSDConversionRate(context.Background())
 			if err != nil {
-				t.Fatalf("Failed to retrieve trading pairs information %s", err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
 			}
 
-			if resp.Buy == "0.0" || resp.Buy == "" {
+			if result.Buy == "0.0" || result.Buy == "" {
 				t.Fatal("Expected to have a buy rate got none")
 			}
-			if resp.Sell == "0.0" || resp.Sell == "" {
+			if result.Sell == "0.0" || result.Sell == "" {
 				t.Fatal("Expected to have a buy rate got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -294,10 +327,16 @@ func TestHTTPClient_GetAccountBalance(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			_, err := c.GetAccountBalance(context.Background(), tc.pair)
+			result, err := c.GetAccountBalance(context.Background(), tc.pair)
 			if err != nil {
-				t.Fatalf("Failed to retrieve account balance, %s", err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -351,7 +390,8 @@ func TestHTTPClient_GetUserTransactions(t *testing.T) {
 					Sort:   bitstamp.SortASC,
 				},
 			},
-			expectedCode: http.StatusBadRequest,
+			// API responds with status 200 and error
+			expectedCode: http.StatusOK,
 		},
 	}
 
@@ -359,12 +399,16 @@ func TestHTTPClient_GetUserTransactions(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			_, err := c.GetUserTransactions(context.Background(), tc.input.pair, tc.input.request)
+			result, err := c.GetUserTransactions(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve user transactions, pair: `%s` request: `%+v`, %s", tc.input.pair, tc.input.request, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -403,12 +447,196 @@ func TestHTTPClient_GetCryptoTransactions(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			_, err := c.GetCryptoTransactions(context.Background(), tc.input)
+			result, err := c.GetCryptoTransactions(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve crypto transactions, request: `%+v`, %s", tc.input, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_GetOpenOrders(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	testCases := []struct {
+		description  string
+		expectedCode int
+	}{
+		{
+			description:  "Should retrieve open orders",
+			expectedCode: http.StatusOK,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.GetOpenOrders(context.Background())
+			if err != nil {
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			if len(result) > 0 && result[0].CurrencyPair == "" {
+				t.Fatal("Order expected to have a currency pair value got none")
+			}
+
+			if len(result) > 0 && result[0].ID == "" {
+				t.Fatal("Order expected to have a unique identifier value got none")
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_GetOrderStatus(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	testCases := []struct {
+		description  string
+		input        bitstamp.GetOrderStatusRequest
+		expectedCode int
+	}{
+		// {
+		// 	description: "Should fetch order status (test case requires a valid id)",
+		// 	input: bitstamp.GetOrderStatusRequest{
+		// 		ID: "0000000000000000",
+		// 	},
+		// 	expectedCode: http.StatusOK,
+		// },
+		{
+			description: "Should fail to fetch order status due to unknown id",
+			input: bitstamp.GetOrderStatusRequest{
+				ID: "123456789",
+			},
+			expectedCode: http.StatusTeapot,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.GetOrderStatus(context.Background(), tc.input)
+			if err != nil {
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_CancelOrder(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	testCases := []struct {
+		description  string
+		input        bitstamp.CancelOrderRequest
+		expectedCode int
+	}{
+		// {
+		// 	description: "Should cancel order by id (test case requires a valid id)",
+		// 	input: bitstamp.CancelOrderRequest{
+		// 		ID: "0000000000000000",
+		// 	},
+		// 	expectedCode: http.StatusOK,
+		// },
+		{
+			description: "Should fail due to invalid id order by id",
+			input: bitstamp.CancelOrderRequest{
+				ID: "xxx",
+			},
+			expectedCode: http.StatusTeapot,
+		},
+		{
+			description: "Should fail to cancel order due to unknown id",
+			input: bitstamp.CancelOrderRequest{
+				ID: "1234567890",
+			},
+			expectedCode: http.StatusTeapot,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CancelOrder(context.Background(), tc.input)
+			if err != nil {
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_CancelAllOrders(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	testCases := []struct {
+		description  string
+		input        *bitstamp.Pair
+		expectedCode int
+	}{
+		{
+			description:  "Should cancel all orders",
+			expectedCode: http.StatusOK,
+		},
+		{
+			description:  "Should cancel BTC/EUR orders",
+			input:        &[]bitstamp.Pair{bitstamp.BTCEUR}[0],
+			expectedCode: http.StatusOK,
+		},
+		{
+			description:  "Should fail to cancel orders",
+			input:        &[]bitstamp.Pair{bitstamp.NILNIL}[0],
+			expectedCode: http.StatusNotFound,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CancelAllOrders(context.Background(), tc.input)
+			if err != nil {
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
@@ -427,23 +655,27 @@ func TestHTTPClient_GetWebsocketsToken(t *testing.T) {
 		},
 	}
 
-	c := bitstamp.NewHTTPAPI(bitstamp.EnableDebugOption())
+	c := bitstamp.NewHTTPAPI()
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
-			resp, err := c.GetWebsocketsToken(context.Background())
+			result, err := c.GetWebsocketsToken(context.Background())
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
-					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
+				apierr, ok := err.(bitstamp.Error)
+				if !ok || apierr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
 				}
 			}
 
-			if err == nil && resp.Token == "" {
+			if err == nil && result.Token == "" {
 				t.Fatal("Expected to have a token got none")
 			}
-			if err == nil && resp.ValidSeconds == "" {
+			if err == nil && result.ValidSeconds == "" {
 				t.Fatal("Expected to have a seconds value got none")
 			}
+
+			_ = result
+			// t.Logf("%+v", result)
 		})
 	}
 }
