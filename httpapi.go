@@ -12,7 +12,6 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -24,11 +23,6 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/gorilla/schema"
-)
-
-var (
-	ErrKeyIsRequired    = errors.New("to be able to use private functions you need to set up an API key")
-	ErrSecretIsRequired = errors.New("to be able to use private functions you need to set up an API secret")
 )
 
 type HTTPAPI struct {
@@ -112,29 +106,34 @@ func (h *HTTPAPI) GetOrderBook(ctx context.Context, p Pair) (*GetOrderBookRespon
 
 // GetTransactions retrieve transactions
 // Docs https://www.bitstamp.net/api/#transactions
-func (h *HTTPAPI) GetTransactions(ctx context.Context, p Pair) (*GetTransactionsResponse, error) {
-	resp, err := h.doRequest(ctx, http.MethodGet, fmt.Sprintf(transactions, p), nil, false)
+func (h *HTTPAPI) GetTransactions(ctx context.Context, p Pair, r GetTransactionsRequest) ([]GetTransactionResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodGet, fmt.Sprintf(transactions+"?"+params.Encode(), p), nil, false)
 	if err != nil {
 		return nil, err
 	}
 
-	var result GetTransactionsResponse
+	var result []GetTransactionResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return nil, err
 	}
 
-	return &result, nil
+	return result, nil
 }
 
 // GetTradingPairsInfo retrieve information for all supported trading pairs
 // Docs https://www.bitstamp.net/api/#trading-pairs-info
-func (h *HTTPAPI) GetTradingPairsInfo(ctx context.Context) (GetTradingPairsInfoResult, error) {
+func (h *HTTPAPI) GetTradingPairsInfo(ctx context.Context) ([]GetTradingPairInfoResult, error) {
 	resp, err := h.doRequest(ctx, http.MethodGet, tradingPairsInfoURL, nil, false)
 	if err != nil {
 		return nil, err
 	}
 
-	var result GetTradingPairsInfoResult
+	var result []GetTradingPairInfoResult
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return nil, err
 	}
@@ -280,13 +279,6 @@ func (h *HTTPAPI) newRequest(ctx context.Context, method string, uri string, bod
 // newAuthenticatedRequest creates a http request that can be used to call private APIs
 // Docs https://www.bitstamp.net/api/#api-authentication
 func (h *HTTPAPI) newAuthenticatedRequest(ctx context.Context, method string, uri string, body io.Reader) (*http.Request, error) {
-	if h.key == "" {
-		return nil, ErrKeyIsRequired
-	}
-	if h.secret == "" {
-		return nil, ErrSecretIsRequired
-	}
-
 	u, err := url.Parse(fmt.Sprintf("%s%s", h.baseURL, uri))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse url `%s`", u)
@@ -373,7 +365,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, NewAPIError(http.StatusText(resp.StatusCode), resp.StatusCode)
+		return nil, NewErrorFromResponse(resp)
 	}
 
 	return resp, nil

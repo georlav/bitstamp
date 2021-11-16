@@ -32,7 +32,7 @@ func TestHTTPClient_GetTicker(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			resp, err := c.GetTicker(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
 				}
 			}
@@ -68,7 +68,7 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			resp, err := c.GetTickerHourly(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
 				}
 			}
@@ -104,7 +104,7 @@ func TestHTTPClient_GetOrderBook(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			resp, err := c.GetOrderBook(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
 				}
 			}
@@ -115,6 +115,46 @@ func TestHTTPClient_GetOrderBook(t *testing.T) {
 			if err == nil && len(resp.Bids) == 0 {
 				t.Fatal("Expected to have bids got none")
 			}
+		})
+	}
+}
+
+func TestHTTPClient_GetTransactions(t *testing.T) {
+	type input struct {
+		pair    bitstamp.Pair
+		request bitstamp.GetTransactionsRequest
+	}
+
+	testCases := []struct {
+		description  string
+		input        input
+		expectedCode int
+	}{
+		{
+			description: "Should fetch hourly transactions",
+			input: input{
+				pair: bitstamp.BTCEUR,
+				request: bitstamp.GetTransactionsRequest{
+					Time: "minute",
+				},
+			},
+			expectedCode: http.StatusOK,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.GetTransactions(context.Background(), tc.input.pair, tc.input.request)
+			if err != nil {
+				t.Fatalf("Failed to retrieve transactions for `%s` pair, %s", tc.input.pair, err)
+			}
+
+			if err == nil && len(result) == 0 {
+				t.Fatal("Expected to have transactions got none")
+			}
+
 		})
 	}
 }
@@ -181,18 +221,16 @@ func TestHTTPClient_GetOHLCData(t *testing.T) {
 		},
 	}
 
-	c := bitstamp.NewHTTPAPI()
+	c := bitstamp.NewHTTPAPI(bitstamp.EnableDebugOption())
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			results, err := c.GetOHLCData(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve OHLC data for `%s`, %s", tc.input.pair, err)
 				}
 			}
-
-			t.Log(err)
 
 			if err == nil && len(results.Data.Ohlc) != int(tc.input.request.Limit) {
 				t.Fatalf("Expected to have %d results got %d", tc.input.request.Limit, len(results.Data.Ohlc))
@@ -323,7 +361,7 @@ func TestHTTPClient_GetUserTransactions(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			_, err := c.GetUserTransactions(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve user transactions, pair: `%s` request: `%+v`, %s", tc.input.pair, tc.input.request, err)
 				}
 			}
@@ -367,7 +405,7 @@ func TestHTTPClient_GetCryptoTransactions(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			_, err := c.GetCryptoTransactions(context.Background(), tc.input)
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve crypto transactions, request: `%+v`, %s", tc.input, err)
 				}
 			}
@@ -395,7 +433,7 @@ func TestHTTPClient_GetWebsocketsToken(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			resp, err := c.GetWebsocketsToken(context.Background())
 			if err != nil {
-				if apierr, ok := err.(*bitstamp.APIError); ok && apierr.StatusCode != tc.expectedCode {
+				if apierr, ok := err.(*bitstamp.Error); ok && apierr.StatusCode != tc.expectedCode {
 					t.Fatalf("Failed to retrieve pair `%s`, %s", tc.input, err)
 				}
 			}

@@ -7,7 +7,13 @@ const (
 	SortDESC Sort = "desc"
 )
 
-// GetOHLCDataRequest used by GetOHLCData method to map its request data
+// GetTransactionsRequest used by GetTransactions method to map outgoing request data
+type GetTransactionsRequest struct {
+	// The time interval from which we want the transactions to be returned. Possible values are minute, hour (default) or day.
+	Time string `schema:"time,omitempty"`
+}
+
+// GetOHLCDataRequest used by GetOHLCData method to map result
 type GetOHLCDataRequest struct {
 	// Unix timestamp from when OHLC data will be started. (optional)
 	Start int64 `schema:"start,omitempty"`
@@ -19,7 +25,7 @@ type GetOHLCDataRequest struct {
 	Limit int64 `schema:"limit,required"`
 }
 
-// GetUserTransactionsRequest used by GetUserTransactions method to map its request data
+// GetUserTransactionsRequest used by GetUserTransactions method to map outgoing request data
 type GetUserTransactionsRequest struct {
 	// Skip that many transactions before returning results (default: 0, maximum: 200000).
 	// If you need to export older history contact support OR use combination of limit and since_id parameters
@@ -34,7 +40,7 @@ type GetUserTransactionsRequest struct {
 	SinceID int64 `schema:"since_id,omitempty"`
 }
 
-// GetCryptoTransactionsRequest used by GetCryptoTransactions method to map its request data
+// GetCryptoTransactionsRequest used by GetCryptoTransactions method to map outgoing request data
 type GetCryptoTransactionsRequest struct {
 	// Limit result to that many transactions (default: 100; minimum: 1; maximum: 1000).
 	Limit int64 `schema:"limit,omitempty"`
