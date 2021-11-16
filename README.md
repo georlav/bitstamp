@@ -31,7 +31,7 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
       * [ ] Buy limit order
       * [ ] Buy market order
       * [ ] Buy instant order
-      * [ ] Sell limit order
+      * [x] Sell limit order
       * [ ] Sell market order
       * [ ] Sell instant order
     * [ ] Withdrawal requests
