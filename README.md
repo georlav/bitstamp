@@ -28,7 +28,7 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
       * [x] Order status
       * [x] Cancel order
       * [x] Cancel all orders
-      * [ ] Buy limit order
+      * [x] Buy limit order
       * [ ] Buy market order
       * [ ] Buy instant order
       * [x] Sell limit order
