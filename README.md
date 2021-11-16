@@ -7,7 +7,7 @@ An extensive client implementation of the [Bitstamp API](https://www.bitstamp.ne
 ## Examples
 Please check the [examples_test.go](examples_test.go) file for some basic usage examples.
 
-## Endpoint Support
+## API Support
 
   ### HTTP API
 
