@@ -11,6 +11,12 @@ import (
 	"github.com/gorilla/websocket"
 )
 
+var (
+	ErrAlreadySubscribed        = errors.New("you can subscribe once per client instance")
+	ErrUnableToParseMessage     = errors.New("failed to parse websocket message")
+	ErrReceivedReconnectMessage = errors.New("Bitstamp requested to reconnect")
+)
+
 type WebsocketMessage struct {
 	Message    interface{}
 	RawMessage []byte
@@ -22,12 +28,6 @@ type WebsocketAPI struct {
 	address     string
 	channelSubs sync.Map
 }
-
-var (
-	ErrAlreadySubscribed        = errors.New("you can subscribe once per client instance")
-	ErrUnableToParseMessage     = errors.New("failed to parse websocket message")
-	ErrReceivedReconnectMessage = errors.New("Bitstamp requested to reconnect")
-)
 
 func NewWebsocketAPI(opts ...wsOption) (*WebsocketAPI, error) {
 	w := WebsocketAPI{
