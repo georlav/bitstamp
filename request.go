@@ -63,3 +63,22 @@ type CancelOrderRequest struct {
 	// Order ID.
 	ID string `schema:"id,omitempty"`
 }
+
+// CreateSellLimitOrderRequest used by CreateSellLimitOrder method to map outgoing request data
+type CreateSellLimitOrderRequest struct {
+	Amount string `schema:"amount,omitempty"`
+	Price  string `schema:"price,omitempty"`
+	// If the order gets executed, a new buy order will be placed, with "limit_price" as its price.
+	LimitPrice string `schema:"limit_price,omitempty"`
+	// Opens sell limit order which will be canceled at 0:00 UTC unless it already has been executed. Possible value: True
+	DailyOrder bool `schema:"daily_order,omitempty"`
+	// An Immediate-Or-Cancel (IOC) order is an order that must be executed immediately.
+	// Any portion of an IOC order that cannot be filled immediately will be cancelled. Possible value: True
+	IOCOrder bool `schema:"ioc_order,omitempty"`
+	// A Fill-Or-Kill (FOK) order is an order that must be executed immediately in its entirety.
+	// If the order cannot be immediately executed in its entirety, it will be cancelled.
+	//Possible value: True
+	FOCOrder bool `schema:"foc_order,omitempty"`
+	// Unique client order id set by client. Client order id needs to be unique string. Client order id value can only be used once.
+	ClientOrderID string `schema:"client_order_id,omitempty"`
+}

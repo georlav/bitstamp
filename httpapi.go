@@ -347,6 +347,37 @@ func (h *HTTPAPI) CancelAllOrders(ctx context.Context, p *Pair) (*CancelAllOrder
 	return &result, nil
 }
 
+// CreateSellLimitOrder creates a sell limit order
+// Docs https://www.bitstamp.net/api/#sell-order
+func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSellLimitOrderRequest) (*CreateSellLimitOrderResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, fmt.Sprintf(sellLimitOrderURL, p), bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result CreateSellLimitOrderResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == "" {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, NewErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
 // GetWebsocketsToken retrieves a token that can be used for subscribing to private WebSocket channels.
 // Docs https://www.bitstamp.net/api/#websockets-token
 // For private Websocket access, you need to contact support.

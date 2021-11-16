@@ -35,10 +35,10 @@ func NewErrorFromResponse(resp *http.Response) Error {
 
 	message := http.StatusText(resp.StatusCode)
 	switch {
-	case errResp.Reason != "":
-		message = errResp.Reason
+	case errResp.Reason != nil:
+		message = string(errResp.Reason)
 	case len(errResp.Errors) > 0:
-		message = errResp.Errors[0].Message
+		message = string(errResp.Errors)
 	case errResp.Error != "":
 		message = errResp.Error
 	}

@@ -1,5 +1,7 @@
 package bitstamp
 
+import "encoding/json"
+
 // TickerResponse used to map results of GetTicker, GetTickerHourly methods
 type GetTickerResponse struct {
 	High      string `json:"high"`
@@ -476,6 +478,15 @@ type CancelAllOrdersResponse struct {
 	Success bool `json:"success"`
 }
 
+// CreateSellLimitOrderResponse used to map response of CreateSellLimitOrder method
+type CreateSellLimitOrderResponse struct {
+	ID       string `json:"id"`
+	Type     string `json:"type"`
+	Price    string `json:"price"`
+	Amount   string `json:"amount"`
+	Datetime string `json:"datetime"`
+}
+
 // GetWebsocketTokenResponse use to map response of GetWebsocketToken method
 type GetWebsocketTokenResponse struct {
 	Token        string `json:"token"`
@@ -484,13 +495,9 @@ type GetWebsocketTokenResponse struct {
 
 // GenericErrorResponse errors are not using a unified format trying to map them all kind of error responses at a generic object
 type GenericErrorResponse struct {
-	Reason string `json:"reason"`
-	Error  string `json:"error"`
-	Status string `json:"status"`
-	Code   string `json:"code"`
-	Errors []struct {
-		Field   string `json:"field"`
-		Message string `json:"message"`
-		Code    string `json:"code"`
-	} `json:"errors"`
+	Error  string          `json:"error"`
+	Errors json.RawMessage `json:"errors"`
+	Reason json.RawMessage `json:"reason"`
+	Status string          `json:"status"`
+	Code   string          `json:"code"`
 }
