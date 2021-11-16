@@ -641,6 +641,78 @@ func TestHTTPClient_CancelAllOrders(t *testing.T) {
 	}
 }
 
+func TestHTTPClient_CreateBuyLimitOrder(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	type input struct {
+		pair    bitstamp.Pair
+		request bitstamp.CreateBuyLimitOrderRequest
+	}
+
+	testCases := []struct {
+		description  string
+		input        input
+		expectedCode int
+	}{
+		// {
+		// 	description: "Should create a buy limit order (test case might trigger an actual buy)",
+		// 	input: input{
+		// 		pair: bitstamp.ZRXEUR,
+		// 		request: bitstamp.CreateBuyLimitOrderRequest{
+		// 			// buy 250 zrx
+		// 			Amount: "250",
+		// 			// At 0.86 euro
+		// 			Price: "0.86",
+		// 			// Sell if price reaches 2.011 euro
+		// 			LimitPrice: "2.011",
+		// 		},
+		// 	},
+		// 	expectedCode: http.StatusOK,
+		// },
+		{
+			description: "Should fail to create a buy limit order",
+			input: input{
+				pair: bitstamp.ZRXEUR,
+				request: bitstamp.CreateBuyLimitOrderRequest{
+					Amount:     "-10",
+					Price:      "-100.00",
+					LimitPrice: "0.3999",
+				},
+			},
+			expectedCode: http.StatusTeapot,
+		},
+		{
+			description: "Should fail to create a buy limit order due to invalid pair",
+			input: input{
+				pair: bitstamp.NILNIL,
+				request: bitstamp.CreateBuyLimitOrderRequest{
+					Amount: "0.0",
+				},
+			},
+			expectedCode: http.StatusNotFound,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI(bitstamp.EnableDebugOption())
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CreateBuyLimitOrder(context.Background(), tc.input.pair, tc.input.request)
+			if err != nil {
+				apiErr, ok := err.(bitstamp.Error)
+				if !ok || apiErr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
 func TestHTTPClient_CreateSellLimitOrder(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
@@ -657,7 +729,7 @@ func TestHTTPClient_CreateSellLimitOrder(t *testing.T) {
 		expectedCode int
 	}{
 		// {
-		// 	description: "Should create a sell limit order",
+		// 	description: "Should create a sell limit order (test case might trigger an actual sell)",
 		// 	input: input{
 		// 		pair: bitstamp.ZRXEUR,
 		// 		request: bitstamp.CreateSellLimitOrderRequest{

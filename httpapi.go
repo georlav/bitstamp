@@ -347,6 +347,37 @@ func (h *HTTPAPI) CancelAllOrders(ctx context.Context, p *Pair) (*CancelAllOrder
 	return &result, nil
 }
 
+// CreateBuyLimitOrder creates a buy limit order
+// Docs https://www.bitstamp.net/api/#buy-order
+func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLimitOrderRequest) (*CreateBuyLimitOrderResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, fmt.Sprintf(buyLimitOrderURL, p), bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result CreateBuyLimitOrderResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == "" {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, NewErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
 // CreateSellLimitOrder creates a sell limit order
 // Docs https://www.bitstamp.net/api/#sell-order
 func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSellLimitOrderRequest) (*CreateSellLimitOrderResponse, error) {
