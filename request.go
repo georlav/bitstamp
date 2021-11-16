@@ -49,3 +49,17 @@ type GetCryptoTransactionsRequest struct {
 	// True - shows also ripple IOU transactions.
 	IncludeIOUS bool `schema:"include_ious ,omitempty"`
 }
+
+// GetOrderStatusRequest used by GetOrderStatus method to map outgoing request data
+type GetOrderStatusRequest struct {
+	// Order ID.
+	ID string `schema:"id,omitempty"`
+	// Client order id. (Can only be used if order was placed with client order id parameter.)
+	ClientOrderID string `schema:"client_order_id,omitempty"`
+}
+
+// CancelOrderRequest used by CancelOrder method to map outgoing request data
+type CancelOrderRequest struct {
+	// Order ID.
+	ID string `schema:"id,omitempty"`
+}

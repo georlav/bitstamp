@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -201,7 +202,7 @@ func (h *HTTPAPI) GetAccountBalance(ctx context.Context, p *Pair) (*GetAccountBa
 
 // GetUserTransactions retrieves current account transactions, if pair is nil returns all user transactions
 // Docs https://www.bitstamp.net/api/#user-transactions
-func (h *HTTPAPI) GetUserTransactions(ctx context.Context, p *Pair, r GetUserTransactionsRequest) (GetUserTransactionsResponse, error) {
+func (h *HTTPAPI) GetUserTransactions(ctx context.Context, p *Pair, r GetUserTransactionsRequest) ([]GetUserTransactionResponse, error) {
 	params := url.Values{}
 	if err := schema.NewEncoder().Encode(r, params); err != nil {
 		return nil, err
@@ -217,9 +218,10 @@ func (h *HTTPAPI) GetUserTransactions(ctx context.Context, p *Pair, r GetUserTra
 		return nil, err
 	}
 
-	var result GetUserTransactionsResponse
+	var result []GetUserTransactionResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
-		return nil, err
+		// handle status 200 with error
+		return nil, NewErrorFromResponse(resp)
 	}
 
 	return result, nil
@@ -227,8 +229,7 @@ func (h *HTTPAPI) GetUserTransactions(ctx context.Context, p *Pair, r GetUserTra
 
 // GetCryptoTransactions retrieves data for all cryptocurrency deposits and withdrawals.
 // Docs https://www.bitstamp.net/api/#crypto-transactions
-// todo: need a response with data GetCryptoTransactionsResponse is incomplete
-func (h *HTTPAPI) GetCryptoTransactions(ctx context.Context, r GetCryptoTransactionsRequest) (GetCryptoTransactionsResponse, error) {
+func (h *HTTPAPI) GetCryptoTransactions(ctx context.Context, r GetCryptoTransactionsRequest) (*GetCryptoTransactionsResponse, error) {
 	params := url.Values{}
 	if err := schema.NewEncoder().Encode(r, params); err != nil {
 		return nil, err
@@ -244,7 +245,106 @@ func (h *HTTPAPI) GetCryptoTransactions(ctx context.Context, r GetCryptoTransact
 		return nil, err
 	}
 
+	return &result, nil
+}
+
+// GetOpenOrders retrieves open orders, after call data is cached for 10 seconds
+// Docs https://www.bitstamp.net/api/#open-orders
+func (h *HTTPAPI) GetOpenOrders(ctx context.Context) ([]GetOpenOrderResponse, error) {
+	resp, err := h.doRequest(ctx, http.MethodPost, openOrdersURL, nil, true)
+	if err != nil {
+		return nil, err
+	}
+
+	var result []GetOpenOrderResponse
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		return nil, err
+	}
+
 	return result, nil
+}
+
+// GetOrderStatus retrieves order status
+// Docs https://www.bitstamp.net/api/#order-status
+func (h *HTTPAPI) GetOrderStatus(ctx context.Context, r GetOrderStatusRequest) (*GetOrderStatusResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, orderStatusURL, bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result GetOrderStatusResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == 0 {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, NewErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
+// CancelOrder cancels an order by id
+// Docs https://www.bitstamp.net/api/#cancel-order
+func (h *HTTPAPI) CancelOrder(ctx context.Context, r CancelOrderRequest) (*CancelOrderResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, cancelOrderURL, bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result CancelOrderResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == 0 {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, NewErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
+// CancelAllOrders if a pair is nil cancels all orders on an account, else cancels all orders for the specified pair
+// Docs https://www.bitstamp.net/api/#cancel-all-orders
+func (h *HTTPAPI) CancelAllOrders(ctx context.Context, p *Pair) (*CancelAllOrdersResponse, error) {
+	u := cancelAllOrdersURL
+	if p != nil {
+		u += p.String() + "/"
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, u, nil, true)
+	if err != nil {
+		return nil, err
+	}
+
+	var result CancelAllOrdersResponse
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	return &result, nil
 }
 
 // GetWebsocketsToken retrieves a token that can be used for subscribing to private WebSocket channels.
@@ -348,7 +448,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 		if err != nil {
 			return nil, err
 		}
-		fmt.Printf("\n%s\n", string(outgoing))
+		log.Printf("\n%s\n", string(outgoing))
 	}
 
 	resp, err := h.handle.Do(req)
@@ -361,7 +461,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 		if err != nil {
 			return nil, err
 		}
-		fmt.Printf("\n%s\n", string(incoming))
+		log.Printf("\n%s\n", string(incoming))
 	}
 
 	if resp.StatusCode != http.StatusOK {

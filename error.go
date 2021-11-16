@@ -2,6 +2,7 @@ package bitstamp
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -22,9 +23,14 @@ func NewErrorFromResponse(resp *http.Response) Error {
 		return NewError("unable to parse error from a nil response", 0)
 	}
 
+	// API does not return valid json objects on those cases, returns text/html
+	if resp.Header.Get("Content-Type") != "application/json" || resp.StatusCode == http.StatusNotFound {
+		return NewError(http.StatusText(resp.StatusCode), resp.StatusCode)
+	}
+
 	var errResp GenericErrorResponse
 	if err := json.NewDecoder(resp.Body).Decode(&errResp); err != nil {
-		return NewError("unable to parse error response, %s", resp.StatusCode)
+		return NewError(fmt.Sprintf("unable to parse error response, %s", err), resp.StatusCode)
 	}
 
 	message := http.StatusText(resp.StatusCode)
