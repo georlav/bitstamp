@@ -641,6 +641,78 @@ func TestHTTPClient_CancelAllOrders(t *testing.T) {
 	}
 }
 
+func TestHTTPClient_CreateSellLimitOrder(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	type input struct {
+		pair    bitstamp.Pair
+		request bitstamp.CreateSellLimitOrderRequest
+	}
+
+	testCases := []struct {
+		description  string
+		input        input
+		expectedCode int
+	}{
+		// {
+		// 	description: "Should create a sell limit order",
+		// 	input: input{
+		// 		pair: bitstamp.ZRXEUR,
+		// 		request: bitstamp.CreateSellLimitOrderRequest{
+		// 			// Sell 20 ZRXEUR
+		// 			Amount: "10",
+		// 			// At 100 euro
+		// 			Price: "100.00",
+		// 			// Buy again if price falls to 0.39 euro
+		// 			LimitPrice: "0.3999",
+		// 		},
+		// 	},
+		// 	expectedCode: http.StatusOK,
+		// },
+		{
+			description: "Should fail to create a sell limit order",
+			input: input{
+				pair: bitstamp.ZRXEUR,
+				request: bitstamp.CreateSellLimitOrderRequest{
+					Amount:     "-10",
+					Price:      "-100.00",
+					LimitPrice: "0.3999",
+				},
+			},
+			expectedCode: http.StatusTeapot,
+		},
+		{
+			description: "Should fail to create a sell limit order due to invalid pair",
+			input: input{
+				pair: bitstamp.NILNIL,
+				request: bitstamp.CreateSellLimitOrderRequest{
+					Amount: "0.0",
+				},
+			},
+			expectedCode: http.StatusNotFound,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CreateSellLimitOrder(context.Background(), tc.input.pair, tc.input.request)
+			if err != nil {
+				apiErr, ok := err.(bitstamp.Error)
+				if !ok || apiErr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
 func TestHTTPClient_GetWebsocketsToken(t *testing.T) {
 	t.Skipf("Skipping test %s", t.Name())
 
