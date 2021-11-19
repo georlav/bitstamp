@@ -221,7 +221,7 @@ func (h *HTTPAPI) GetUserTransactions(ctx context.Context, p *Pair, r GetUserTra
 	var result []GetUserTransactionResponse
 	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		// handle status 200 with error
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return result, nil
@@ -289,7 +289,7 @@ func (h *HTTPAPI) GetOrderStatus(ctx context.Context, r GetOrderStatusRequest) (
 	if result.ID == 0 {
 		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
 		resp.StatusCode = http.StatusTeapot
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return &result, nil
@@ -320,7 +320,7 @@ func (h *HTTPAPI) CancelOrder(ctx context.Context, r CancelOrderRequest) (*Cance
 	if result.ID == 0 {
 		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
 		resp.StatusCode = http.StatusTeapot
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return &result, nil
@@ -372,7 +372,7 @@ func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLi
 	if result.ID == "" {
 		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
 		resp.StatusCode = http.StatusTeapot
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return &result, nil
@@ -403,7 +403,7 @@ func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSell
 	if result.ID == "" {
 		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
 		resp.StatusCode = http.StatusTeapot
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return &result, nil
@@ -527,7 +527,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return nil, NewErrorFromResponse(resp)
+		return nil, newErrorFromResponse(resp)
 	}
 
 	return resp, nil
