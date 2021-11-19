@@ -30,10 +30,10 @@ Please check the [examples_test.go](examples_test.go) file for some basic usage 
       * [x] Cancel all orders
       * [x] Buy limit order
       * [ ] Buy market order
-      * [ ] Buy instant order
+      * [x] Buy instant order
       * [x] Sell limit order
       * [ ] Sell market order
-      * [ ] Sell instant order
+      * [x] Sell instant order
     * [ ] Withdrawal requests
     * [ ] Crypto withdrawals
     * [ ] Crypto deposits

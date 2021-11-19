@@ -695,11 +695,122 @@ func TestHTTPClient_CreateBuyLimitOrder(t *testing.T) {
 		},
 	}
 
-	c := bitstamp.NewHTTPAPI(bitstamp.EnableDebugOption())
+	c := bitstamp.NewHTTPAPI()
 
 	for _, tc := range testCases {
 		t.Run(tc.description, func(t *testing.T) {
 			result, err := c.CreateBuyLimitOrder(context.Background(), tc.input.pair, tc.input.request)
+			if err != nil {
+				apiErr, ok := err.(bitstamp.Error)
+				if !ok || apiErr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_CreateBuyInstantOrder(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	type input struct {
+		pair    bitstamp.Pair
+		request bitstamp.CreateBuyInstantOrderRequest
+	}
+
+	testCases := []struct {
+		description  string
+		input        input
+		expectedCode int
+	}{
+		// {
+		// 	description: "Should create a buy instant order (Warning: test case might trigger an actual buy)",
+		// 	input: input{
+		// 		pair: bitstamp.BTCEUR,
+		// 		request: bitstamp.CreateBuyInstantOrderRequest{
+		// 			Amount: "20.01",
+		// 		},
+		// 	},
+		// 	expectedCode: http.StatusOK,
+		// },
+		{
+			description: "Should create a buy instant order (Warning: test case might trigger an actual buy)",
+			input: input{
+				pair: bitstamp.BTCEUR,
+				request: bitstamp.CreateBuyInstantOrderRequest{
+					Amount: "10.01",
+				},
+			},
+			expectedCode: http.StatusOK,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CreateBuyInstantOrder(context.Background(), tc.input.pair, tc.input.request)
+			if err != nil {
+				apiErr, ok := err.(bitstamp.Error)
+				if !ok || apiErr.StatusCode != tc.expectedCode {
+					t.Fatalf("Failed to retrieve data, %s", err)
+				}
+			}
+
+			_ = result
+			// t.Logf("%+v", result)
+		})
+	}
+}
+
+func TestHTTPClient_CreateSellInstantOrder(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping test %s in short mode", t.Name())
+	}
+
+	type input struct {
+		pair    bitstamp.Pair
+		request bitstamp.CreateSellInstantOrderRequest
+	}
+
+	testCases := []struct {
+		description  string
+		input        input
+		expectedCode int
+	}{
+		{
+			description: "Should create a sell instant order (test case might trigger an actual sell)",
+			input: input{
+				pair: bitstamp.BTCEUR,
+				request: bitstamp.CreateSellInstantOrderRequest{
+					// sell 10 btc
+					Amount: "10",
+				},
+			},
+			expectedCode: http.StatusOK,
+		},
+		{
+			description: "Should fail to create a sell instant order due to invalid amount",
+			input: input{
+				pair: bitstamp.BTCEUR,
+				request: bitstamp.CreateSellInstantOrderRequest{
+					Amount: "-10.66",
+				},
+			},
+			expectedCode: http.StatusOK,
+		},
+	}
+
+	c := bitstamp.NewHTTPAPI()
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			result, err := c.CreateSellInstantOrder(context.Background(), tc.input.pair, tc.input.request)
 			if err != nil {
 				apiErr, ok := err.(bitstamp.Error)
 				if !ok || apiErr.StatusCode != tc.expectedCode {
