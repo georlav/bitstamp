@@ -83,6 +83,18 @@ type CreateBuyLimitOrderRequest struct {
 	ClientOrderID string `schema:"client_order_id,omitempty"`
 }
 
+// CreateBuyInstantOrderRequest used by CreateBuyInstantOrder method to map outgoing request data
+type CreateBuyInstantOrderRequest struct {
+	// Amount in counter currency (Example: For BTC/USD pair, amount is quoted in USD)
+	Amount string `schema:"amount"`
+}
+
+// CreateBuyMarketOrderRequest used by CreateBuyMarketOrder method to map outgoing request data
+type CreateBuyMarketOrderRequest struct {
+	// Amount in base currency (Example: For BTC/USD pair, amount is quoted in BTC)
+	Amount string `schema:"amount"`
+}
+
 // CreateSellLimitOrderRequest used by CreateSellLimitOrder method to map outgoing request data
 type CreateSellLimitOrderRequest struct {
 	Amount string `schema:"amount,omitempty"`
@@ -98,6 +110,18 @@ type CreateSellLimitOrderRequest struct {
 	// If the order cannot be immediately executed in its entirety, it will be cancelled.
 	//Possible value: True
 	FOCOrder bool `schema:"foc_order,omitempty"`
+	// Unique client order id set by client. Client order id needs to be unique string. Client order id value can only be used once.
+	ClientOrderID string `schema:"client_order_id,omitempty"`
+}
+
+// CreateSellInstantOrderRequest used by CreateSellInstantOrder method to map outgoing request data
+type CreateSellInstantOrderRequest struct {
+	// Amount in base currency (Example: For BTC/USD pair, amount is quoted in BTC)
+	Amount string `schema:"amount"`
+	// Instant sell orders allow you to sell an amount of the base currency determined by the value
+	// of it in the counter-currency. Amount_in_counter sets the amount parameter to refer to the counter
+	// currency instead of the base currency of the selected trading pair. Possible value: True
+	AmountInCounter bool `schema:"amount_in_counter,omitempty"`
 	// Unique client order id set by client. Client order id needs to be unique string. Client order id value can only be used once.
 	ClientOrderID string `schema:"client_order_id,omitempty"`
 }

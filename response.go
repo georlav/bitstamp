@@ -478,17 +478,11 @@ type CancelAllOrdersResponse struct {
 	Success bool `json:"success"`
 }
 
-// CreateBuyLimitOrderResponse used to map response of CreateBuyLimitOrder method
-type CreateBuyLimitOrderResponse struct {
-	ID       string `json:"id"`
-	Type     string `json:"type"`
-	Price    string `json:"price"`
-	Amount   string `json:"amount"`
-	Datetime string `json:"datetime"`
-}
-
-// CreateSellLimitOrderResponse used to map response of CreateSellLimitOrder method
-type CreateSellLimitOrderResponse struct {
+// CreateOrderResponse used to map responses of the following metthods
+// CreateBuyLimitOrder, CreateSellLimitOrder
+// CreateBuyMarketOrder, CreateSellMarketOrder
+// CreateBuyInstantOrder, CreateSellInstantOrder
+type CreateOrderResponse struct {
 	ID       string `json:"id"`
 	Type     string `json:"type"`
 	Price    string `json:"price"`

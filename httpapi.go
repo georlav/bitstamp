@@ -1,8 +1,4 @@
 // package bitstamp
-//
-// REQUEST LIMITS
-// Do not do more than 8000 requests per 10 minutes or your IP address will be banned.
-// For real time data use websocket API.
 package bitstamp
 
 import (
@@ -15,7 +11,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -34,6 +29,11 @@ type HTTPAPI struct {
 	handle  *http.Client
 }
 
+// NewHTTPAPI create a new client instance
+//
+// REQUEST LIMITS
+// Do not do more than 8000 requests per 10 minutes or your IP address will be banned.
+// For real time data use websocket API.
 func NewHTTPAPI(options ...option) *HTTPAPI {
 	api := HTTPAPI{
 		baseURL: "https://www.bitstamp.net",
@@ -349,7 +349,7 @@ func (h *HTTPAPI) CancelAllOrders(ctx context.Context, p *Pair) (*CancelAllOrder
 
 // CreateBuyLimitOrder creates a buy limit order
 // Docs https://www.bitstamp.net/api/#buy-order
-func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLimitOrderRequest) (*CreateBuyLimitOrderResponse, error) {
+func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLimitOrderRequest) (*CreateOrderResponse, error) {
 	params := url.Values{}
 	if err := schema.NewEncoder().Encode(r, params); err != nil {
 		return nil, err
@@ -363,7 +363,38 @@ func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLi
 	var buf bytes.Buffer
 	teeReader := io.TeeReader(resp.Body, &buf)
 
-	var result CreateBuyLimitOrderResponse
+	var result CreateOrderResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == "" {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, newErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
+// CreateBuyInstantOrder creates a new buy instant order
+// Docs https://www.bitstamp.net/api/#buy-instant-order
+func (h *HTTPAPI) CreateBuyInstantOrder(ctx context.Context, p Pair, r CreateBuyInstantOrderRequest) (*CreateOrderResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, fmt.Sprintf(buyInstantOrderURL, p), bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result CreateOrderResponse
 	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
 		return nil, err
 	}
@@ -380,7 +411,7 @@ func (h *HTTPAPI) CreateBuyLimitOrder(ctx context.Context, p Pair, r CreateBuyLi
 
 // CreateSellLimitOrder creates a sell limit order
 // Docs https://www.bitstamp.net/api/#sell-order
-func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSellLimitOrderRequest) (*CreateSellLimitOrderResponse, error) {
+func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSellLimitOrderRequest) (*CreateOrderResponse, error) {
 	params := url.Values{}
 	if err := schema.NewEncoder().Encode(r, params); err != nil {
 		return nil, err
@@ -394,7 +425,38 @@ func (h *HTTPAPI) CreateSellLimitOrder(ctx context.Context, p Pair, r CreateSell
 	var buf bytes.Buffer
 	teeReader := io.TeeReader(resp.Body, &buf)
 
-	var result CreateSellLimitOrderResponse
+	var result CreateOrderResponse
+	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
+		return nil, err
+	}
+
+	// handle status 200 with error
+	if result.ID == "" {
+		resp.Body = ioutil.NopCloser(bytes.NewReader(buf.Bytes()))
+		resp.StatusCode = http.StatusTeapot
+		return nil, newErrorFromResponse(resp)
+	}
+
+	return &result, nil
+}
+
+// CreateSellInstantOrder creates a sell instant order
+// Docs https://www.bitstamp.net/api/#sell-instant-order
+func (h *HTTPAPI) CreateSellInstantOrder(ctx context.Context, p Pair, r CreateSellInstantOrderRequest) (*CreateOrderResponse, error) {
+	params := url.Values{}
+	if err := schema.NewEncoder().Encode(r, params); err != nil {
+		return nil, err
+	}
+
+	resp, err := h.doRequest(ctx, http.MethodPost, fmt.Sprintf(sellInstantOrderURL, p), bytes.NewBuffer([]byte(params.Encode())), true)
+	if err != nil {
+		return nil, err
+	}
+
+	var buf bytes.Buffer
+	teeReader := io.TeeReader(resp.Body, &buf)
+
+	var result CreateOrderResponse
 	if err := json.NewDecoder(teeReader).Decode(&result); err != nil {
 		return nil, err
 	}
@@ -510,7 +572,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 		if err != nil {
 			return nil, err
 		}
-		log.Printf("\n%s\n", string(outgoing))
+		fmt.Printf("\n%s\n", string(outgoing))
 	}
 
 	resp, err := h.handle.Do(req)
@@ -523,7 +585,7 @@ func (h *HTTPAPI) doRequest(ctx context.Context, method string, uri string, payl
 		if err != nil {
 			return nil, err
 		}
-		log.Printf("\n%s\n", string(incoming))
+		fmt.Printf("\n%s\n", string(incoming))
 	}
 
 	if resp.StatusCode != http.StatusOK {

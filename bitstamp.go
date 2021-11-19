@@ -1,3 +1,5 @@
+// package bitstamp
+// An extensive client implementation of the Bitstamp API using Go.
 package bitstamp
 
 //go:generate go run tools/generatepairs/generatepairs.go
