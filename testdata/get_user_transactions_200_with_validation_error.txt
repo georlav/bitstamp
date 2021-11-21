@@ -10,10 +10,6 @@ Date: Sun, 21 Nov 2021 15:04:08 GMT
 Expires: Sun, 21 Nov 2021 15:04:08 GMT
 Last-Modified: Sun, 21 Nov 2021 15:04:08 GMT
 Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
-Set-Cookie: stmpdid=qF02I5BqHoKwz9TJ87adyOVEVwCoQeahtRwNDZt991gUwBtXsfHkgxZlVBAcGVrQDWeAfCuv69sUn60q4KiBvBE; expires=Sun, 19-Nov-2028 15:04:08 GMT; httponly; Max-Age=220752000; Path=/; secure
-Set-Cookie: visid_incap_99025=RumQkHyzS2y/EI1yLpsA2udfmmEAAAAAQUIPAAAAAAD5dH+GKe9q3WiHD67Ixv+r; expires=Mon, 21 Nov 2022 09:45:47 GMT; HttpOnly; path=/; Domain=.bitstamp.net
-Set-Cookie: nlbi_99025=pzA2WggZQjaUGRsCL9q5pgAAAAA/jFXQPf4VLW1EJJ/puPvB; path=/; Domain=.bitstamp.net
-Set-Cookie: incap_ses_533_99025=WvfdcxOKIjClw6nOMZllB+dfmmEAAAAA4zOkIsbgi2EjdD19v02QzA==; path=/; Domain=.bitstamp.net
 Strict-Transport-Security: max-age=63072000; includeSubDomains
 Vary: Authorization,Accept-Language,Cookie,Accept-Encoding
 X-Bts-Request-Trace-Id: Root=1-619a5fe8-3c59c29773d8db823d351249

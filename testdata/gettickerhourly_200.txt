@@ -7,10 +7,6 @@ Content-Security-Policy: default-src 'self' 'report-sample'; base-uri 'self' ; c
 Content-Type: application/json
 Date: Sun, 21 Nov 2021 14:13:10 GMT
 Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
-Set-Cookie: stmpdid=gVAD7VDhbWlZuxlTu9fPeFYGc-y9gXT6otz9pUuJpkviCJSZPbjUicDkhBXgfRrQwl3pav67oDgB20HFzjU_mUg; expires=Sun, 19-Nov-2028 14:13:10 GMT; httponly; Max-Age=220752000; Path=/; secure
-Set-Cookie: nlbi_99025=5LLXYK8D1DSEh1H8L9q5pgAAAAA0kIybCSKugnZjZXkGlBZJ; path=/; Domain=.bitstamp.net
-Set-Cookie: visid_incap_99025=nr9a+eJjQ2Kqnv3A63Udc/VTmmEAAAAAQUIPAAAAAABb1h59mflEXNwOXpNrD7sn; expires=Mon, 21 Nov 2022 09:45:46 GMT; HttpOnly; path=/; Domain=.bitstamp.net
-Set-Cookie: incap_ses_533_99025=q+iLR8b6iX2qPJ7OMZllB/VTmmEAAAAA2TYCJrMC5pnsP2E6EnEyDg==; path=/; Domain=.bitstamp.net
 Strict-Transport-Security: max-age=63072000; includeSubDomains
 Vary: Authorization,Accept-Language,Cookie,Accept-Encoding
 X-Bts-Request-Trace-Id: Root=1-619a53f6-3ae24e724c98a90145c80105

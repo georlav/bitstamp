@@ -75,11 +75,13 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 		{
 			description:  "Should fetch info for ZRX/EUR",
 			input:        bitstamp.ZRXEUR,
+			responseFile: "testdata/getticker_200.txt",
 			expectedCode: http.StatusOK,
 		},
 		{
 			description:  "Should fail to fetch info due to invalid pair",
 			input:        bitstamp.NILNIL,
+			responseFile: "testdata/getticker_404.txt",
 			expectedCode: http.StatusNotFound,
 		},
 	}
@@ -92,7 +94,7 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 			}
 
 			ts := httprawmock.NewServer(
-				httprawmock.NewRoute(http.MethodGet, "/api/v2/ticker/{pair}/", b),
+				httprawmock.NewRoute(http.MethodGet, "/api/v2/ticker_hour/{pair}/", b),
 			)
 			defer t.Cleanup(ts.Close)
 
