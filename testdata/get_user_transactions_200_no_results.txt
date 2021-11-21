@@ -1,0 +1,22 @@
+HTTP/2.0 200 OK
+Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, accept, cache-control
+Access-Control-Allow-Methods: POST, GET
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+Content-Language: en
+Content-Security-Policy: default-src 'self' 'report-sample'; base-uri 'self' ; connect-src 'self' wss://ws.bitstamp.net *.bitstamp.net *.trackjs.com *.google-analytics.com stats.g.doubleclick.net *.mixpanel.com *.branch.io hcaptcha.com *.hcaptcha.com ; font-src 'self' data: assets.bitstamp.net fonts.gstatic.com fonts.gstatic.cn www.google.com ; frame-ancestors 'self'; frame-src 'self' pixel-a.basis.net *.youtube-nocookie.com 8720977.fls.doubleclick.net *.ledgerwallet.com *.google.com www.recaptcha.net www.googletagmanager.com pixel.sitescout.com ctpe.net hcaptcha.com *.hcaptcha.com ; img-src * data: blob:; media-src 'self' assets.bitstamp.net ; object-src 'self' blob:; report-uri /api/report-csp/; script-src 'self' 'report-sample' 'unsafe-eval' assets.bitstamp.net js-agent.newrelic.com *.google-analytics.com d3dy5gmtp8yhk7.cloudfront.net www.googleadservices.com www.googletagmanager.com www.gstatic.com www.gstatic.cn www.recaptcha.net code.highcharts.com/stock/highstock.js bam.nr-data.net cdn.mxpnl.com app.link hcaptcha.com *.hcaptcha.com 'nonce-MTI2NDUzMTk3OTk0NjU2MTY4NDIzNzY5OTUyMTgxNDAyODYxMjE0'; style-src 'self' 'unsafe-inline' assets.bitstamp.net fonts.googleapis.com hcaptcha.com *.hcaptcha.com
+Content-Type: application/json
+Date: Sun, 21 Nov 2021 15:04:08 GMT
+Expires: Sun, 21 Nov 2021 15:04:08 GMT
+Last-Modified: Sun, 21 Nov 2021 15:04:08 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Vary: Authorization,Accept-Language,Cookie,Accept-Encoding
+X-Bts-Request-Trace-Id: Root=1-619a5fe8-6341f44a37ff2e4a7fee7113
+X-Cdn: Imperva
+X-Frame-Options: SAMEORIGIN
+X-Iinfo: 2-25868307-25868231 PNNN RT(1637507047788 0) q(0 0 0 -1) r(1 1) U6
+X-Server-Auth-Signature: 568dfbb27823a817a8f11e5c613471fac38e8c18b6d4a55e6dca08362f9375f0
+X-Xss-Protection: 1; mode=block
+
+[]

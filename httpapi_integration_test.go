@@ -8,7 +8,7 @@ import (
 	"github.com/georlav/bitstamp"
 )
 
-func TestHTTPClient_GetTicker(t *testing.T) {
+func TestHTTPClient_GetTicker_Integration(t *testing.T) {
 	testCases := []struct {
 		description  string
 		input        bitstamp.Pair
@@ -48,7 +48,7 @@ func TestHTTPClient_GetTicker(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetTickerHourly(t *testing.T) {
+func TestHTTPClient_GetTickerHourly_Integration(t *testing.T) {
 	testCases := []struct {
 		description  string
 		input        bitstamp.Pair
@@ -88,7 +88,7 @@ func TestHTTPClient_GetTickerHourly(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetOrderBook(t *testing.T) {
+func TestHTTPClient_GetOrderBook_Integration(t *testing.T) {
 	testCases := []struct {
 		description  string
 		input        bitstamp.Pair
@@ -131,7 +131,7 @@ func TestHTTPClient_GetOrderBook(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetTransactions(t *testing.T) {
+func TestHTTPClient_GetTransactions_Integration(t *testing.T) {
 	type input struct {
 		pair    bitstamp.Pair
 		request bitstamp.GetTransactionsRequest
@@ -176,7 +176,7 @@ func TestHTTPClient_GetTransactions(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetTradingPairsInfo(t *testing.T) {
+func TestHTTPClient_GetTradingPairsInfo_Integration(t *testing.T) {
 	testCases := []struct {
 		description  string
 		expectedCode int
@@ -209,7 +209,7 @@ func TestHTTPClient_GetTradingPairsInfo(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetOHLCData(t *testing.T) {
+func TestHTTPClient_GetOHLCData_Integration(t *testing.T) {
 	type input struct {
 		pair    bitstamp.Pair
 		request bitstamp.GetOHLCDataRequest
@@ -266,7 +266,7 @@ func TestHTTPClient_GetOHLCData(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetEURUSDConversionRate(t *testing.T) {
+func TestHTTPClient_GetEURUSDConversionRate_Integration(t *testing.T) {
 	testCases := []struct {
 		description  string
 		expectedCode int
@@ -302,7 +302,7 @@ func TestHTTPClient_GetEURUSDConversionRate(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetAccountBalance(t *testing.T) {
+func TestHTTPClient_GetAccountBalance_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -317,9 +317,14 @@ func TestHTTPClient_GetAccountBalance(t *testing.T) {
 			expectedCode: http.StatusOK,
 		},
 		{
-			description:  "Should fetch account balance for ZRX/EUR pair",
-			pair:         &[]bitstamp.Pair{bitstamp.ZRXEUR}[0],
+			description:  "Should fetch account balance for BTC/EUR pair",
+			pair:         &[]bitstamp.Pair{bitstamp.BTCEUR}[0],
 			expectedCode: http.StatusOK,
+		},
+		{
+			description:  "Should fail to fetch account balance due to invalid pair",
+			pair:         &[]bitstamp.Pair{bitstamp.NILNIL}[0],
+			expectedCode: http.StatusNotFound,
 		},
 	}
 
@@ -341,7 +346,7 @@ func TestHTTPClient_GetAccountBalance(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetUserTransactions(t *testing.T) {
+func TestHTTPClient_GetUserTransactions_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -413,7 +418,7 @@ func TestHTTPClient_GetUserTransactions(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetCryptoTransactions(t *testing.T) {
+func TestHTTPClient_GetCryptoTransactions_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -461,7 +466,7 @@ func TestHTTPClient_GetCryptoTransactions(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetOpenOrders(t *testing.T) {
+func TestHTTPClient_GetOpenOrders_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -502,7 +507,7 @@ func TestHTTPClient_GetOpenOrders(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetOrderStatus(t *testing.T) {
+func TestHTTPClient_GetOrderStatus_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -546,7 +551,7 @@ func TestHTTPClient_GetOrderStatus(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CancelOrder(t *testing.T) {
+func TestHTTPClient_CancelOrder_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -597,7 +602,7 @@ func TestHTTPClient_CancelOrder(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CancelAllOrders(t *testing.T) {
+func TestHTTPClient_CancelAllOrders_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -641,7 +646,7 @@ func TestHTTPClient_CancelAllOrders(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CreateBuyLimitOrder(t *testing.T) {
+func TestHTTPClient_CreateBuyLimitOrder_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -713,7 +718,7 @@ func TestHTTPClient_CreateBuyLimitOrder(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CreateBuyInstantOrder(t *testing.T) {
+func TestHTTPClient_CreateBuyInstantOrder_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -768,7 +773,7 @@ func TestHTTPClient_CreateBuyInstantOrder(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CreateSellInstantOrder(t *testing.T) {
+func TestHTTPClient_CreateSellInstantOrder_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -824,7 +829,7 @@ func TestHTTPClient_CreateSellInstantOrder(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_CreateSellLimitOrder(t *testing.T) {
+func TestHTTPClient_CreateSellLimitOrder_Integration(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping test %s in short mode", t.Name())
 	}
@@ -896,7 +901,7 @@ func TestHTTPClient_CreateSellLimitOrder(t *testing.T) {
 	}
 }
 
-func TestHTTPClient_GetWebsocketsToken(t *testing.T) {
+func TestHTTPClient_GetWebsocketsToken_Integration(t *testing.T) {
 	t.Skipf("Skipping test %s", t.Name())
 
 	testCases := []struct {

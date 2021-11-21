@@ -1,0 +1,13 @@
+HTTP/2.0 200 OK
+Cache-Control: max-age=1, public
+Content-Type: application/json
+Date: Sun, 21 Nov 2021 14:04:11 GMT
+Etag: "1145660648"
+Expires: Sun, 21 Nov 2051 14:04:12 GMT
+Last-Modified: Sun, 21 Nov 2021 14:04:10 GMT
+Set-Cookie: visid_incap_99025=ShK43WvIRhC7rm1KFAcfptpRmmEAAAAAQUIPAAAAAAAtbp2sWodD9fwRp/uV34Ob; expires=Mon, 21 Nov 2022 09:45:47 GMT; HttpOnly; path=/; Domain=.bitstamp.net
+Set-Cookie: incap_ses_533_99025=tuxqPYB3mzH9U5zOMZllB9pRmmEAAAAAzMq+yV5OKnz+GCSeSa62Wg==; path=/; Domain=.bitstamp.net
+X-Cdn: Imperva
+X-Iinfo: 9-53197326-53191250 2CNN RT(1637503450383 0) q(0 0 0 -1) r(0 0)
+
+{"high": "53130.00", "last": "52261.99", "timestamp": "1637503449", "bid": "52236.68", "vwap": "52190.04", "volume": "453.15776854", "low": "50986.00", "ask": "52257.92", "open": "53027.17"}

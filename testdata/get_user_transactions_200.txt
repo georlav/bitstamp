@@ -1,0 +1,22 @@
+HTTP/2.0 200 OK
+Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, accept, cache-control
+Access-Control-Allow-Methods: POST, GET
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+Content-Language: en
+Content-Security-Policy: default-src 'self' 'report-sample'; base-uri 'self' ; connect-src 'self' wss://ws.bitstamp.net *.bitstamp.net *.trackjs.com *.google-analytics.com stats.g.doubleclick.net *.mixpanel.com *.branch.io hcaptcha.com *.hcaptcha.com ; font-src 'self' data: assets.bitstamp.net fonts.gstatic.com fonts.gstatic.cn www.google.com ; frame-ancestors 'self'; frame-src 'self' pixel-a.basis.net *.youtube-nocookie.com 8720977.fls.doubleclick.net *.ledgerwallet.com *.google.com www.recaptcha.net www.googletagmanager.com pixel.sitescout.com ctpe.net hcaptcha.com *.hcaptcha.com ; img-src * data: blob:; media-src 'self' assets.bitstamp.net ; object-src 'self' blob:; report-uri /api/report-csp/; script-src 'self' 'report-sample' 'unsafe-eval' assets.bitstamp.net js-agent.newrelic.com *.google-analytics.com d3dy5gmtp8yhk7.cloudfront.net www.googleadservices.com www.googletagmanager.com www.gstatic.com www.gstatic.cn www.recaptcha.net code.highcharts.com/stock/highstock.js bam.nr-data.net cdn.mxpnl.com app.link hcaptcha.com *.hcaptcha.com 'nonce-MzE3NTU2OTE0OTU1NDc5Mzg0NDYzMjA0MDc4OTc3MTc1NTQzMzU3'; style-src 'self' 'unsafe-inline' assets.bitstamp.net fonts.googleapis.com hcaptcha.com *.hcaptcha.com
+Content-Type: application/json
+Date: Sun, 21 Nov 2021 15:04:08 GMT
+Expires: Sun, 21 Nov 2021 15:04:08 GMT
+Last-Modified: Sun, 21 Nov 2021 15:04:08 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Vary: Authorization,Accept-Language,Cookie,Accept-Encoding
+X-Bts-Request-Trace-Id: Root=1-619a5fe8-530c234360d5486c2d379957
+X-Cdn: Imperva
+X-Frame-Options: SAMEORIGIN
+X-Iinfo: 2-25868297-25868231 PNNN RT(1637507047481 0) q(0 0 0 -1) r(2 2) U6
+X-Server-Auth-Signature: 7b18794fe29074a740702925228d8e372b2a451cbce8bf5ba2848cc0f0f93a21
+X-Xss-Protection: 1; mode=block
+
+[{"fee":"0.00","btc_usd":"0.00","datetime":"2021-11-21 21:21:21.000000","usd":0,"btc":0,"type":"0","id":1,"eur":"250000.00"},{"fee":"0.00","order_id":1,"id":2,"usd":0,"xrp_eur":0.16332,"btc":0,"datetime":"2021-11-21 21:21:21.000000","type":"2","xrp":"1526.87974528","eur":"-250.00000"},{"fee":"0.00","order_id":2,"id":3,"usd":0,"xrp_eur":0.85505,"btc":0,"datetime":"2021-11-21 21:21:21.000000","type":"2","xrp":"-299.58713000","eur":"256.16198"},{"fee":"0.00","order_id":3,"id":4,"usd":0,"xrp_eur":0.85505,"btc":0,"datetime":"2021-11-21 21:21:21.000000","type":"2","xrp":"-1227.28287000","eur":"1049.38822"}]
