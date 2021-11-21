@@ -1,0 +1,26 @@
+HTTP/2.0 200 OK
+Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, accept, cache-control
+Access-Control-Allow-Methods: POST, GET
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+Content-Language: en
+Content-Security-Policy: default-src 'self' 'report-sample'; base-uri 'self' ; connect-src 'self' wss://ws.bitstamp.net *.bitstamp.net *.trackjs.com *.google-analytics.com stats.g.doubleclick.net *.mixpanel.com *.branch.io hcaptcha.com *.hcaptcha.com ; font-src 'self' data: assets.bitstamp.net fonts.gstatic.com fonts.gstatic.cn www.google.com ; frame-ancestors 'self'; frame-src 'self' pixel-a.basis.net *.youtube-nocookie.com 8720977.fls.doubleclick.net *.ledgerwallet.com *.google.com www.recaptcha.net www.googletagmanager.com pixel.sitescout.com ctpe.net hcaptcha.com *.hcaptcha.com ; img-src * data: blob:; media-src 'self' assets.bitstamp.net ; object-src 'self' blob:; report-uri /api/report-csp/; script-src 'self' 'report-sample' 'unsafe-eval' assets.bitstamp.net js-agent.newrelic.com *.google-analytics.com d3dy5gmtp8yhk7.cloudfront.net www.googleadservices.com www.googletagmanager.com www.gstatic.com www.gstatic.cn www.recaptcha.net code.highcharts.com/stock/highstock.js bam.nr-data.net cdn.mxpnl.com app.link hcaptcha.com *.hcaptcha.com 'nonce-MTk1MzQ4MTU1MTI1NjMxMDYxMjMyMjgwNDg1MTQwMjEzNTcxMjA0'; style-src 'self' 'unsafe-inline' assets.bitstamp.net fonts.googleapis.com hcaptcha.com *.hcaptcha.com
+Content-Type: application/json
+Date: Sun, 21 Nov 2021 15:04:08 GMT
+Expires: Sun, 21 Nov 2021 15:04:08 GMT
+Last-Modified: Sun, 21 Nov 2021 15:04:08 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
+Set-Cookie: stmpdid=qF02I5BqHoKwz9TJ87adyOVEVwCoQeahtRwNDZt991gUwBtXsfHkgxZlVBAcGVrQDWeAfCuv69sUn60q4KiBvBE; expires=Sun, 19-Nov-2028 15:04:08 GMT; httponly; Max-Age=220752000; Path=/; secure
+Set-Cookie: visid_incap_99025=RumQkHyzS2y/EI1yLpsA2udfmmEAAAAAQUIPAAAAAAD5dH+GKe9q3WiHD67Ixv+r; expires=Mon, 21 Nov 2022 09:45:47 GMT; HttpOnly; path=/; Domain=.bitstamp.net
+Set-Cookie: nlbi_99025=pzA2WggZQjaUGRsCL9q5pgAAAAA/jFXQPf4VLW1EJJ/puPvB; path=/; Domain=.bitstamp.net
+Set-Cookie: incap_ses_533_99025=WvfdcxOKIjClw6nOMZllB+dfmmEAAAAA4zOkIsbgi2EjdD19v02QzA==; path=/; Domain=.bitstamp.net
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Vary: Authorization,Accept-Language,Cookie,Accept-Encoding
+X-Bts-Request-Trace-Id: Root=1-619a5fe8-3c59c29773d8db823d351249
+X-Cdn: Imperva
+X-Frame-Options: SAMEORIGIN
+X-Iinfo: 2-25868311-25868231 PNNN RT(1637507047876 0) q(0 0 0 -1) r(0 0) U6
+X-Server-Auth-Signature: ff3aba622eb877bc5c1af9076c2d475869b5748fe86de675c5f07862eb54d5e8
+X-Xss-Protection: 1; mode=block
+
+{"status": "error", "reason": "Limit too large."}

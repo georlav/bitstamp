@@ -1,0 +1,25 @@
+HTTP/2.0 404 Not Found
+Content-Length: 341
+Access-Control-Allow-Headers: accept, origin, cache-control, x-requested-with, content-type
+Access-Control-Allow-Methods: GET, POST
+Access-Control-Allow-Origin: *
+Content-Type: text/html
+Date: Sun, 21 Nov 2021 14:06:08 GMT
+Server: webserver
+Set-Cookie: nlbi_99025=1QwmKydlmCeptke3L9q5pgAAAADSI/coy4AJxbu/quYQM+wj; path=/; Domain=.bitstamp.net
+Set-Cookie: visid_incap_99025=m5hU73BQTwmihUrUIp1ub09SmmEAAAAAQUIPAAAAAABzRktSDk5bPN12W2f3ycem; expires=Mon, 21 Nov 2022 09:45:46 GMT; HttpOnly; path=/; Domain=.bitstamp.net
+Set-Cookie: incap_ses_533_99025=dCq3c0ZzC3VfwZzOMZllB09SmmEAAAAAD99/vyesGvjYEhv48MxjYQ==; path=/; Domain=.bitstamp.net
+X-Cdn: Imperva
+X-Iinfo: 3-42153956-42150329 2NNN RT(1637503567632 0) q(0 0 0 -1) r(0 0) U11
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title>404 Not Found</title>
+ </head>
+ <body>
+  <h1>404 Not Found</h1>
+ </body>
+</html>

@@ -1,0 +1,618 @@
+HTTP/2.0 404 Not Found
+Connection: close
+Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, accept, cache-control
+Access-Control-Allow-Methods: POST, GET
+Access-Control-Allow-Origin: *
+Content-Language: en
+Content-Security-Policy: default-src 'self' 'report-sample'; base-uri 'self' ; connect-src 'self' wss://ws.bitstamp.net *.bitstamp.net *.trackjs.com *.google-analytics.com stats.g.doubleclick.net *.mixpanel.com *.branch.io hcaptcha.com *.hcaptcha.com ; font-src 'self' data: assets.bitstamp.net fonts.gstatic.com fonts.gstatic.cn www.google.com ; frame-ancestors 'self'; frame-src 'self' pixel-a.basis.net *.youtube-nocookie.com 8720977.fls.doubleclick.net *.ledgerwallet.com *.google.com www.recaptcha.net www.googletagmanager.com pixel.sitescout.com ctpe.net hcaptcha.com *.hcaptcha.com ; img-src * data: blob:; media-src 'self' assets.bitstamp.net ; object-src 'self' blob:; report-uri /api/report-csp/; script-src 'self' 'report-sample' 'unsafe-eval' assets.bitstamp.net js-agent.newrelic.com *.google-analytics.com d3dy5gmtp8yhk7.cloudfront.net www.googleadservices.com www.googletagmanager.com www.gstatic.com www.gstatic.cn www.recaptcha.net code.highcharts.com/stock/highstock.js bam.nr-data.net cdn.mxpnl.com app.link hcaptcha.com *.hcaptcha.com 'nonce-ODA2MjM4NTkyNzExODA3OTA2NzQ3MzU1NjkzNzA5ODM2OTkwNDA='; style-src 'self' 'unsafe-inline' assets.bitstamp.net fonts.googleapis.com hcaptcha.com *.hcaptcha.com
+Content-Type: text/html; charset=utf-8
+Date: Sun, 21 Nov 2021 14:13:10 GMT
+Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips mod_wsgi/4.7.1 Python/2.7
+Set-Cookie: stmpdid=nILF3v10-LX_q530NPg-Ix1G0HzdrvfH5QNi60EUyz4sUWjnFXSiOUXHiesdPFabRqbDmhjQc8OY3J7VJoD8QUo; expires=Sun, 19-Nov-2028 14:13:10 GMT; httponly; Max-Age=220752000; Path=/; secure
+Set-Cookie: nlbi_99025=rmiFFt1OGwg1cK+/L9q5pgAAAABJWSDHdJwWQqplQI+zJJa5; path=/; Domain=.bitstamp.net
+Set-Cookie: visid_incap_99025=bg3eaRx5RZWX3PrUhA+H0fVTmmEAAAAAQUIPAAAAAABD4QbgXtPxTrjBtNHPjSc7; expires=Mon, 21 Nov 2022 09:45:46 GMT; HttpOnly; path=/; Domain=.bitstamp.net
+Set-Cookie: incap_ses_533_99025=XWC8UJ/1pQ3CPJ7OMZllB/VTmmEAAAAAixHJUC0xfDg3uAbSI1axSQ==; path=/; Domain=.bitstamp.net
+Strict-Transport-Security: max-age=63072000; includeSubDomains
+Vary: Authorization,Accept-Language,Cookie
+X-Bts-Request-Trace-Id: Root=1-619a53f6-56d346ed34b9ad740cf83031
+X-Cdn: Imperva
+X-Frame-Options: SAMEORIGIN
+X-Iinfo: 5-80036942-80036175 2NNN RT(1637503989590 0) q(0 0 0 -1) r(1 1) U11
+X-Xss-Protection: 1; mode=block
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no">
+
+        
+        <meta name="description" content="Buy and sell leading cryptocurrencies at Bitstamp – the world's
+        longest-standing crypto exchange. Low fees, reliable service and simple setup. Open a free account." />
+        
+        
+        <meta property="og:description" content="Buy and sell leading cryptocurrencies at Bitstamp – the world's
+        longest-standing crypto exchange. Low fees, reliable service and simple setup. Open a free account." />
+        <meta name="twitter:description" content="Buy and sell leading cryptocurrencies at Bitstamp – the world's
+        longest-standing crypto exchange. Low fees, reliable service and simple setup. Open a free account." />
+        
+
+        <title>404 Error - Bitstamp</title>
+        
+        <meta content="Bitstamp – Buy and sell Bitcoin and Ethereum" name="twitter:title">
+        <meta content="Bitstamp – Buy and sell Bitcoin and Ethereum" property="og:title">
+        
+
+        
+        <meta content="https://assets.bitstamp.net/static/webapp/images/meta/meta-homepage.364baa6f9f10651e085cfdc693143400776bcf3b.jpg" name="twitter:image">
+        <meta content="https://assets.bitstamp.net/static/webapp/images/meta/meta-homepage.364baa6f9f10651e085cfdc693143400776bcf3b.jpg" property="og:image">
+        
+        <meta content="@Bitstamp" name="twitter:site">
+        <meta content="@Bitstamp" name="twitter:creator">
+        <meta content="summary_large_image" name="twitter:card">
+        <meta content="Bitstamp" property="og:site_name">
+        <meta content="website" property="og:type">
+
+        <meta content="https://assets.bitstamp.net/static/webapp/images/meta/mstile-150x150.b13f71abe3cc720381dc33ecab49a5ed537b8649.png" name="msapplication-TileImage">
+        <meta content="#159e49" name="msapplication-TileColor">
+        <meta content="#ffffff" name="theme-color">
+        <meta name="keywords" content="bitcoin" />
+
+        <link href="https://assets.bitstamp.net/static/webapp/images/meta/apple-touch-icon.bc5fb1a0b379b4bd6def18fa65fa99ac64257836.png" rel="apple-touch-icon" sizes="180x180">
+        <link href="https://assets.bitstamp.net/static/webapp/images/meta/favicon-32x32.78f238e8508c9b8e712ec692b496d40f29e35f91.png" rel="icon" sizes="32x32" type="image/png">
+        <link href="https://assets.bitstamp.net/static/webapp/images/meta/favicon-16x16.12a63fcdc2718ee74db017beff907464e690aba5.png" rel="icon" sizes="16x16" type="image/png">
+        <link href="/s/webapp/site.webmanifest" rel="manifest">
+        <link rel="shortcut icon" href="https://assets.bitstamp.net/static/icons/favicon.55f163090bd10f912c1baaa5eb125e4830080917.ico" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://assets.bitstamp.net" crossorigin />
+        <meta name="apple-itunes-app" content="app-id=1406825640">
+
+        
+        <link rel="stylesheet" href="https://assets.bitstamp.net/static/webapp/css/webapp.bundle.4541cb3f3322e127ffa87a37df3308046a8a747f.css" type="text/css"/>
+        
+        <link rel="alternate" href="https://blog.bitstamp.net/feed.xml" type="application/rss+xml" title="Bitstamp Blog" />
+        <style id="anti-clickjack-element">
+            body {
+                display: none !important;
+            }
+        </style>
+        <script nonce="ODA2MjM4NTkyNzExODA3OTA2NzQ3MzU1NjkzNzA5ODM2OTkwNDA=">
+            var selfOrigin = window.self ? window.self.origin : '';
+            var topOrigin = window.top ? window.top.origin : '';
+
+            if (selfOrigin === topOrigin) {
+                var antiClickjack = document.getElementById("anti-clickjack-element");
+                antiClickjack.parentNode.removeChild(antiClickjack);
+            } else {
+                top.location = self.location;
+            }
+        </script>
+        
+        
+        <script nonce="ODA2MjM4NTkyNzExODA3OTA2NzQ3MzU1NjkzNzA5ODM2OTkwNDA=">
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});
+            })(window,document,'script','dataLayer','GTM-P9C3GXV');
+        </script>
+
+        
+
+        
+<script id="page_context" nonce="ODA2MjM4NTkyNzExODA3OTA2NzQ3MzU1NjkzNzA5ODM2OTkwNDA=" type="application/json">{}</script>
+
+
+<script nonce="ODA2MjM4NTkyNzExODA3OTA2NzQ3MzU1NjkzNzA5ODM2OTkwNDA=" type="application/javascript">
+    var Bitstamp = JSON.parse(document.getElementById('page_context').textContent);
+    var BitstampConstants = Bitstamp.constants;
+    var BitstampApiEndpoints = Bitstamp.endpoints;
+    var BitstampPages = Bitstamp.routes;
+
+    var CsrfMiddlewareToken = '';
+</script>
+
+
+
+        
+
+    </head>
+    
+    <body class=""
+          
+    >
+        
+        
+        
+
+
+<div id="header" class="header">
+    <div class="page-header">
+        <div class="page-header__container container">
+            <a class="page-header__brand"
+               href="/"
+               title="Bitstamp"
+            >
+                <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 20"><path d="M0 19.97h76.61v-2.01H0v2.01zm81.92 0h6.58v-2.01h-6.58v2.01z" fill="#159e49"/><path d="M14.93 14.93h2.74V4.6h-2.74zm-.27-13.31a1.61 1.61 0 0 1 .47-1.18A1.66 1.66 0 0 1 16.31 0a1.59 1.59 0 0 1 1.18.44A1.59 1.59 0 0 1 18 1.62a1.55 1.55 0 0 1-.47 1.18 1.6 1.6 0 0 1-1.18.44 1.66 1.66 0 0 1-1.18-.44 1.54 1.54 0 0 1-.51-1.18zM24 4.57h2.8v2.07H24v5a1.39 1.39 0 0 0 .39 1.06 1.35 1.35 0 0 0 1 .42 5.46 5.46 0 0 0 1.3-.18l.35 2a9.5 9.5 0 0 1-2.3.32 4.14 4.14 0 0 1-1.38-.26 3.25 3.25 0 0 1-1.09-.67 3.51 3.51 0 0 1-.71-1.07 3.45 3.45 0 0 1-.23-1.35V6.7h-1.89V4.63h1.89v-3H24v3zm4.41 2.86a2.71 2.71 0 0 1 .29-1.26 3.72 3.72 0 0 1 .8-1 4.29 4.29 0 0 1 1.24-.65 5.7 5.7 0 0 1 1.59-.23 10.56 10.56 0 0 1 1.83.17 12.36 12.36 0 0 1 1.92.54l-.59 1.94A10.93 10.93 0 0 0 34 6.46a6.06 6.06 0 0 0-1.41-.18 1.91 1.91 0 0 0-1.15.3.91.91 0 0 0-.44.82.76.76 0 0 0 .42.71 4.55 4.55 0 0 0 1 .42c.41.11.82.23 1.3.32a4.49 4.49 0 0 1 1.28.53 3.14 3.14 0 0 1 1 .94 3 3 0 0 1 .41 1.6 2.91 2.91 0 0 1-.29 1.3 3.69 3.69 0 0 1-.83 1 4 4 0 0 1-1.3.68 6.15 6.15 0 0 1-1.65.23 11 11 0 0 1-4-.82l.56-1.92a8.65 8.65 0 0 0 3.27.74 2.07 2.07 0 0 0 1.21-.33 1 1 0 0 0 .45-.88.84.84 0 0 0-.42-.74 3.2 3.2 0 0 0-1-.44c-.41-.12-.83-.24-1.3-.36a5.08 5.08 0 0 1-1.3-.53 3 3 0 0 1-1-.91 2.64 2.64 0 0 1-.38-1.54M42 4.57h2.8v2.07H42v5a1.37 1.37 0 0 0 1.41 1.48 5.33 5.33 0 0 0 1.3-.18l.35 2a9.43 9.43 0 0 1-2.3.32 4 4 0 0 1-1.43-.26 3.06 3.06 0 0 1-1.09-.67 2.91 2.91 0 0 1-.71-1.07 3.28 3.28 0 0 1-.24-1.35V6.7H37.4V4.63h1.89v-3h2.63v3zm7.09 7.2a1.37 1.37 0 0 0 .5 1.06 1.85 1.85 0 0 0 1.27.44 2.34 2.34 0 0 0 1.71-.67 2.39 2.39 0 0 0 .65-1.74v-.62a6 6 0 0 0-1.69-.24 3 3 0 0 0-1.8.47 1.52 1.52 0 0 0-.64 1.27m-2.57.15a2.94 2.94 0 0 1 1.24-2.54 5.87 5.87 0 0 1 3.48-.88c.32 0 .65 0 1 .05s.68.09 1 .15v-.53a1.62 1.62 0 0 0-.57-1.3 2.29 2.29 0 0 0-1.53-.5 8.83 8.83 0 0 0-3.36.74l-.68-1.89a11.55 11.55 0 0 1 4.34-.85 4.64 4.64 0 0 1 1.74.29 3.59 3.59 0 0 1 1.35.8 3.26 3.26 0 0 1 .89 1.21 4 4 0 0 1 .32 1.56v4.22a.72.72 0 0 0 .18.53.62.62 0 0 0 .53.21 1.23 1.23 0 0 0 .33 0 1.78 1.78 0 0 0 .2 0l.18 2c-.24 0-.44.09-.68.12a5.86 5.86 0 0 1-.74 0 2.3 2.3 0 0 1-1.35-.38 2.07 2.07 0 0 1-.83-1A4.81 4.81 0 0 1 48.7 15a3.4 3.4 0 0 1-1.15-.68 3.29 3.29 0 0 1-1-2.36m12.12-7.42h2.13L61.12 6a4.2 4.2 0 0 1 1.48-1.28 4.06 4.06 0 0 1 1.88-.44 4 4 0 0 1 2 .5 3.3 3.3 0 0 1 1.3 1.39 4.91 4.91 0 0 1 1.65-1.42 4.28 4.28 0 0 1 2.06-.47 4.44 4.44 0 0 1 1.51.26 3.24 3.24 0 0 1 1.21.8A3 3 0 0 1 75 6.55a4.21 4.21 0 0 1 .3 1.53v6.85h-2.65v-6.4a1.91 1.91 0 0 0-.56-1.45 2.05 2.05 0 0 0-1.44-.56 2.2 2.2 0 0 0-1.65.71 2.53 2.53 0 0 0-.65 1.83v5.87h-2.72v-6.4a2 2 0 0 0-.53-1.45 1.93 1.93 0 0 0-1.41-.56 2.22 2.22 0 0 0-1.69.71 2.49 2.49 0 0 0-.65 1.83v5.87h-2.71V4.54zm26.88 5.17a3.83 3.83 0 0 0-.21-1.33 2.67 2.67 0 0 0-.56-1 2.46 2.46 0 0 0-.78-.71 2.12 2.12 0 0 0-1.06-.24 2.25 2.25 0 0 0-1.74.74A2.62 2.62 0 0 0 80.47 9v1.38a2.8 2.8 0 0 0 .18 1 2.51 2.51 0 0 0 .5.82 2 2 0 0 0 .77.53 2.54 2.54 0 0 0 1 .18 2.5 2.5 0 0 0 1.08-.17 2.16 2.16 0 0 0 .83-.68 3.9 3.9 0 0 0 .56-1 3.7 3.7 0 0 0 .16-1.35zm-7.67-5.17H80l.32 1.33a3.87 3.87 0 0 1 3.25-1.59 4.46 4.46 0 0 1 1.89.41 4.6 4.6 0 0 1 1.47 1.12 5 5 0 0 1 1 1.71 6.58 6.58 0 0 1 .35 2.19 6.56 6.56 0 0 1-.35 2.18 5.31 5.31 0 0 1-1 1.71 4.6 4.6 0 0 1-1.47 1.12 4.36 4.36 0 0 1-1.89.41 4.12 4.12 0 0 1-1.71-.35 3.43 3.43 0 0 1-1.33-1.06V20h-2.65zM9 12.27a2.29 2.29 0 0 1-1.68.59H4V8.58h3.35A2.53 2.53 0 0 1 9 9.17a2.06 2.06 0 0 1 .62 1.54A1.85 1.85 0 0 1 9 12.27zM4 2.8h3a2.14 2.14 0 0 1 1.53.56 1.81 1.81 0 0 1 .67 1.45 1.8 1.8 0 0 1-.59 1.41 2.22 2.22 0 0 1-1.53.54H4zm7.7 6.05A3.64 3.64 0 0 0 10 7.52a3.19 3.19 0 0 0 1.39-1.18 3.3 3.3 0 0 0 .53-1.86A3.44 3.44 0 0 0 11.56 3a3.21 3.21 0 0 0-.91-1.18A4.16 4.16 0 0 0 9.26 1 5.77 5.77 0 0 0 7.49.77H0v1.88a2.08 2.08 0 0 1 2.06 2.1A2.07 2.07 0 0 1 0 6.84v1.71a2.08 2.08 0 0 1 2.06 2.1V11A2.08 2.08 0 0 1 0 13.07V15h7.82a5.09 5.09 0 0 0 1.83-.3 4 4 0 0 0 1.44-.8 3.52 3.52 0 0 0 .91-1.27 3.65 3.65 0 0 0 .35-1.6 3.63 3.63 0 0 0-.61-2.18z" fill="#333433"/></svg>
+                
+            </a>
+            
+                <div class="page-header__menu page-header__menu--info header-menu">
+                    <a href="/institutional-trading/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="institutional"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                        Institutions
+                    </a>
+                    <a href="/pro/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="pro-trader"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                        Pro traders
+                    </a>
+                    <a href="/mobile/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="apps"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                        Mobile app
+                    </a>
+                    <a href="/bitstamp-earn/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="bitstamp-earn"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                        Bitstamp earn
+                    </a>
+                    <a href="/markets/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="market"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                      Markets
+                    </a>
+                    <a href="/news/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="news"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                      News
+                    </a>
+                    <a href="/market/tradeview/"
+                       class="js-ga header-menu__item"
+                       data-ga-category="tradeview"
+                       data-ga-action="click"
+                       data-ga-label="navigation-click"
+                       data-ga-include-title
+                    >
+                      Tradeview
+                    </a>
+                </div>
+            
+            
+            <div id="header-mobile-menu" class="page-header__mobile-menu">
+                <div id="header-mobile-menu-toggler" class="menu-icon">
+                    <div class="menu-icon__lines"></div>
+                </div>
+                <div class="mobile-menu-container">
+                  
+
+
+
+
+<div class="mobile-menu mobile-menu--active"
+     id="menu-root-anon">
+    <div class="mobile-menu__content">
+        <a class="mobile-menu__item"
+           href="/institutional-trading/"
+        >
+            Institutions & partners
+        </a>
+        <a class="mobile-menu__item"
+           href="/pro/"
+        >
+            Pro traders
+        </a>
+        <a class="mobile-menu__item"
+           href="/mobile/"
+        >
+            Mobile app
+        </a>
+        <a class="mobile-menu__item"
+           href="/markets/"
+        >
+            Markets
+        </a>
+        <a class="mobile-menu__item"
+           href="/bitstamp-earn/"
+        >
+            Bitstamp earn
+        </a>
+        <a class="mobile-menu__item"
+           href="/news/"
+        >
+            News
+        </a>
+        <a class="mobile-menu__item"
+           href="/market/tradeview/"
+        >
+            Tradeview
+        </a>
+    </div>
+    <div class="hide-medium-and-up">
+        <div class="mobile-menu__buttons">
+            <a class="button button--outline button--fluid button--side-margin"
+               href="/onboarding/login/"
+            >
+                Log in
+            </a>
+            <a class="button button--primary button--fluid button--side-margin"
+               href="/account/register/"
+            >
+                Get started
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div id="menu-default-currency"
+     class="mobile-menu"
+>
+    <a class="mobile-menu__back js-mobile-menu-open-submenu"
+       href="#menu-root-anon"
+    >
+        <span class="mobile-menu__back-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path fill="currentColor" d="M6 9.5.3 3.9l1.4-1.4L6 6.7l4.3-4.2 1.4 1.4L6 9.5z"/></svg></span>
+        Back
+    </a>
+    <div class="mobile-menu__content">
+        <widget-header-mobile-currency-selector class="wc"></widget-header-mobile-currency-selector>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+        
+        
+
+                <div id="content-wrapper" class="content-wrapper ">
+        <div class="help-panel-parent">
+            <widget-help-panel widget="true" class="wc wc--global-style help-panel"></widget-help-panel>
+        </div>
+
+
+    
+<section class="section error-section">
+    <div class="container">
+        <div class="error-section__wrapper">
+            
+<h1 class="text-title text-title--secondary">Hodl on, where did the page go?</h1>
+<img srcset="https://assets.bitstamp.net/static/webapp/images/error/404.73ed280e6695aec792df53ce1779abc0fd1d4745.png,
+             https://assets.bitstamp.net/static/webapp/images/error/404.caab10ec9a9882dd6c77b40a69ae08ec823e972d.svg 2x"
+     src="https://assets.bitstamp.net/static/webapp/images/error/404.caab10ec9a9882dd6c77b40a69ae08ec823e972d.svg"
+     class="error-section__image"
+     alt="404">
+<h2 class="error-section__error-name">Error code: 404</h2>
+<p class="error-section__content">Page Not Found. The requested URL was not found on this server.</p>
+<div class="error-section__link">
+    ‹ <a href="/" class="link link--colored">Back to Bitstamp</a>
+</div>
+
+        </div>
+    </div>
+</section>
+
+
+                </div>
+                <footer class="footer">
+    <div class="container container--block">
+        <div class="footer__links row">
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column">
+                <h4 class="footer__title">ABOUT</h4>
+                <a class="footer__link"
+                   href="/about-us/"
+                >
+                    Who We Are
+                </a>
+                <a class="footer__link"
+                   href="https://bitstamp.talentlyft.com/"
+                   target="_blank"
+                >
+                    Careers
+                </a>
+                <a class="footer__link hide-medium-and-down" href="/terms-of-use/ltd/"
+                >
+                    Legal & Privacy
+                </a>
+                <a class="footer__link"
+                   href="/fee-schedule/"
+                >
+                    Fee Schedule
+                </a>
+                <a class="footer__link"
+                   href="/faq/"
+                >
+                    FAQ
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column hide-large-and-up">
+                <h4 class="footer__title">LEGAL & PRIVACY</h4>
+                
+                    <a class="footer__link"
+                       href="/terms-of-use/ltd/"
+                    >
+                        Terms of Use: Bitstamp Ltd - Personal account
+                    </a>
+                    <a class="footer__link"
+                       href="/terms-of-use/ltd-corporate/"
+                    >
+                        Terms of Use: Bitstamp Ltd - Corporate account
+                    </a>
+                
+                
+                    <a class="footer__link"
+                       href="/terms-of-use/sa/"
+                    >
+                        Terms of Use: Bitstamp S.A. - Personal account
+                    </a>
+                    <a class="footer__link"
+                       href="/terms-of-use/sa-corporate/"
+                    >
+                        Terms of Use: Bitstamp S.A. - Corporate account
+                    </a>
+                
+                
+                    <a class="footer__link"
+                       href="/terms-of-use/inc/"
+                    >
+                        Terms of Use: Bitstamp USA Inc - Personal account
+                    </a>
+                    <a class="footer__link"
+                       href="/terms-of-use/inc-corporate/"
+                    >
+                        Terms of Use: Bitstamp USA Inc - Corporate account
+                    </a>
+                
+                <a class="footer__link"
+                   href="/bitgo_customer_terms/"
+                >
+                    BitGo customer terms
+                </a>
+                <a class="footer__link"
+                   href="/copper-customer-terms/"
+                >
+                    Copper customer terms
+                </a>
+                <a class="footer__link"
+                   href="/privacy-policy/"
+                >
+                    Privacy Policy
+                </a>
+                <a class="footer__link"
+                   href="/aml-policy/"
+                >
+                    AML Policy
+                </a>
+                
+                <a class="footer__link"
+                   href="/cookie-statement/"
+                >
+                    Cookie Policy
+                </a>
+                <a class="footer__link"
+                   href="/risk-warning/"
+                >
+                    Risk Warning
+                </a>
+                <a class="footer__link"
+                   href="/s/documents/Digital_asset_framework_listing.pdf"
+                >
+                    Digital Asset Listing Framework
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column">
+                <h4 class="footer__title">PRODUCTS</h4>
+                <a class="footer__link"
+                   href="/mobile/"
+                >
+                    Mobile App
+                </a>
+                <a class="footer__link"
+                   href="/market/tradeview/"
+                >
+                    Tradeview
+                </a>
+                
+                <a class="footer__link"
+                   href="/bitstamp-earn/"
+                >
+                  Bitstamp Earn
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column">
+                <h4 class="footer__title">SERVICES</h4>
+                <a
+                    class="footer__link"
+                    href="/institutional-trading/">
+                    Institutions & Partners</a>
+                <a
+                    class="footer__link"
+                    href="/crypto-as-a-service/">
+                    Crypto-as-a-Service</a>
+                <a
+                    class="footer__link"
+                    href="/pro/">
+                    Pro Traders</a>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column">
+                <h4 class="footer__title">RESOURCES</h4>
+                <a class="footer__link hide-medium-and-down"
+                   href="/api/"
+                >
+                    API Documentation
+                </a>
+                <a class="footer__link hide-large-and-up"
+                   href="/api/"
+                >
+                    HTTP API
+                </a>
+                
+                <a class="footer__link hide-large-and-up"
+                   href="/fix/"
+                >
+                    FIX
+                </a>
+                <a class="footer__link"
+                   href="/pgp-key/"
+                >
+                    PGP Key
+                </a>
+                <a class="footer__link"
+                   href="/lightning-network-node/"
+                >
+                    Lightning Network
+                </a>
+            </div>
+            
+            <div class="col-sm-6 col-md-6 col-lg-2 footer__column">
+                <h4 class="footer__title">CONTACT</h4>
+                <a class="footer__link"
+                   href="mailto:info@bitstamp.net"
+                >
+                    info@bitstamp.net
+                </a>
+                <a class="footer__link"
+                   href="mailto:press@bitstamp.net"
+                >
+                    press@bitstamp.net
+                </a>
+                <a class="footer__link"
+                   href="mailto:support@bitstamp.net"
+                >
+                    support@bitstamp.net
+                </a>
+                <a class="footer__link"
+                   href="mailto:complaints@bitstamp.net"
+                >
+                    complaints@bitstamp.net
+                </a>
+                
+            </div>
+        </div>
+        <div class="footer__bottom row">
+            <div class="col-sm-12 col-md-12 col-lg-3 footer__column">
+                <span class="footer__copyright">
+                    All rights reserved © 2021 Bitstamp. <br class="nmls-break">NMLS #1905429
+                </span>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 footer__logos footer__column">
+                <img src="https://assets.bitstamp.net/static/webapp/images/logos/visa.10bb025bec61ff61753dbc81877e2300cbbcfb6e.svg?v=1582099938"
+                     class="visa-logo-footer"
+                     alt="visa">
+                <img src="https://assets.bitstamp.net/static/webapp/images/logos/mastercard-symbol.cdb3b52e2fd9c4f67e5f4c62ea0977cd536c303a.svg"
+                     class="mastercard-logo-footer"
+                     alt="mastercard">
+                <img src="https://assets.bitstamp.net/static/webapp/images/logos/maestro-symbol.672238cbb6c89ff21a6159edfffeeeeff6000fd3.svg"
+                     class="maestro-logo-footer"
+                     alt="maestro">
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 footer__column">
+                <a class="social-link-footer"
+                   href="https://twitter.com/Bitstamp"
+                   target="_blank"
+                   rel="noopener"
+                >
+                    <img src="https://assets.bitstamp.net/static/webapp/images/logos/twitter.b9a4f034a90084fb052dccfe3a379a6092c78e8d.svg"
+                         class="social-link-footer__img"
+                         alt="twitter"
+                    >
+                </a>
+                <a
+                    class="social-link-footer"
+                    href="https://www.linkedin.com/company/bitstamp"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <img src="https://assets.bitstamp.net/static/webapp/images/logos/linkedin.6c8e7e82e391f66bcf92eecab732784d79fe1bbc.svg"
+                         class="social-link-footer__img"
+                         alt="linkedin"
+                    >
+                </a>
+                <a class="social-link-footer"
+                   href="https://www.facebook.com/Bitstamp"
+                   target="_blank"
+                   rel="noopener"
+                >
+                    <img src="https://assets.bitstamp.net/static/webapp/images/logos/facebook.986682f1317753ce30b4f2cad9973a5085f4cc76.svg"
+                         class="social-link-footer__img"
+                         alt="facebook"
+                    >
+                </a>
+                <a class="social-link-footer"
+                   href="https://www.instagram.com/bitstampexchange/"
+                   target="_blank"
+                   rel="noopener"
+                >
+                    <img src="https://assets.bitstamp.net/static/webapp/images/logos/instagram.f15c316c0c659fb9cac5ed4a73d237802f1e1282.svg"
+                         class="social-link-footer__img"
+                         alt="instagram"
+                    >
+                </a>
+                <a class="social-link-footer"
+                   href="https://t.me/bitstampexchange"
+                   target="_blank"
+                   rel="noopener"
+                >
+                    <img src="https://assets.bitstamp.net/static/webapp/images/logos/telegram.f8713ccd8386890abff55460ea1e4e648268c832.svg"
+                         class="social-link-footer__img"
+                         alt="telegram"
+                    >
+                </a>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-2 footer__column">
+                <img src="https://assets.bitstamp.net/static/webapp/images/bitstamp-logo-white.e4e96b98dea832e1bdd2a0f93d3cba586c13e49f.svg"
+                     class="bitstamp-logo-footer"
+                     alt="Bitstamp"
+                >
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+        <script type="text/javascript"
+                src="https://assets.bitstamp.net/static/webapp/js/base/external-integrations.2b0083404ca189c42b9f2c943c73ac5dda18f7d0.js"
+                data-gtm-id="GTM-P9C3GXV"
+                data-mixpanel-token=""
+        ></script>
+        
+    <script src="https://assets.bitstamp.net/static/webapp/js/error/error-page.4fee42162cec9eb672e9058373b991e3b18227ea.js"></script>
+
+    </body>
+    
+</html>
