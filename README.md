@@ -1,3 +1,4 @@
+[![godoc](https://img.shields.io/badge/godoc-reference-5272B4.svg)](https://pkg.go.dev/github.com/georlav/bitstamp)
 ![Tests](https://github.com/georlav/bitstamp/workflows/Tests/badge.svg)
 ![Golang-CI](https://github.com/georlav/bitstamp/workflows/Golang-CI/badge.svg)
 
@@ -6,6 +7,11 @@ An extensive client implementation of the [Bitstamp API](https://www.bitstamp.ne
 
 ## Examples
 Please check the [examples_test.go](examples_test.go) file for some basic usage examples.
+
+## Install
+```bash
+go get github.com/georlav/bitstamp@latest
+```
 
 ## API Support
 
