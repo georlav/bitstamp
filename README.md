@@ -1,12 +1,6 @@
 [![godoc](https://img.shields.io/badge/godoc-reference-5272B4.svg)](https://pkg.go.dev/github.com/georlav/bitstamp)
-<<<<<<< HEAD
-![Tests](https://github.com/georlav/bitstamp/workflows/Tests/badge.svg)
-![Golang-CI](https://github.com/georlav/bitstamp/workflows/Golang-CI/badge.svg)
-=======
 [![Tests](https://github.com/georlav/bitstamp/actions/workflows/ci.yml/badge.svg)](https://github.com/georlav/bitstamp/actions/workflows/ci.yml)
 [![Golang-CI](https://github.com/georlav/bitstamp/actions/workflows/linter.yml/badge.svg)](https://github.com/georlav/bitstamp/actions/workflows/linter.yml)
->>>>>>> c587135 (update readme)
-
 # Bitstamp
 An extensive client implementation of the [Bitstamp API](https://www.bitstamp.net/api/) using Go.
 
