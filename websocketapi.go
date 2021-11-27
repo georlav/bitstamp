@@ -15,6 +15,8 @@ var (
 	ErrAlreadySubscribed        = errors.New("you can subscribe once per client instance")
 	ErrUnableToParseMessage     = errors.New("failed to parse websocket message")
 	ErrReceivedReconnectMessage = errors.New("Bitstamp requested to reconnect")
+	ErrReadMessage              = errors.New("failed to read message")
+	ErrWriteMessage             = errors.New("failed to write message")
 )
 
 type WebsocketMessage struct {
@@ -84,7 +86,7 @@ func (w *WebsocketAPI) Consume(ctx context.Context, channels ...Channel) (<-chan
 				msg, err := parseMessage(m)
 				if err != nil {
 					messages <- WebsocketMessage{
-						Error:      err,
+						Error:      fmt.Errorf("unable to parse message, %w", err),
 						RawMessage: m,
 					}
 
@@ -112,7 +114,7 @@ func (w *WebsocketAPI) SubscribeToChannels(ctx context.Context, channels ...Chan
 		m := fmt.Sprintf(`{"event":"bts:subscribe","data":{"channel": "%s"}}`, channels[i].String())
 
 		if err := w.writeMessage(ctx, []byte(m)); err != nil {
-			return err
+			return fmt.Errorf("failed to subscribe to channel %s, %w", channels[i].String(), err)
 		}
 
 		w.channelSubs.Store(channels[i], struct{}{})
@@ -127,7 +129,7 @@ func (w *WebsocketAPI) UnSubscribeFromChannels(ctx context.Context, channels ...
 		m := fmt.Sprintf(`{"event":"bts:unsubscribe","data":{"channel": "%s"}}`, channels[i].String())
 
 		if err := w.conn.WriteMessage(websocket.TextMessage, []byte(m)); err != nil {
-			return fmt.Errorf("failed to unsubscribe to channel %s, %w", channels[i], err)
+			return fmt.Errorf("failed to unsubscribe from channel %s, %w", channels[i].String(), err)
 		}
 
 		w.channelSubs.Delete(channels[i])
@@ -153,7 +155,7 @@ func (w *WebsocketAPI) GetSubscriptions() []Channel {
 func (w *WebsocketAPI) readMessage(ctx context.Context) ([]byte, error) {
 	_, msg, err := w.conn.ReadMessage()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("%w, %s", ErrReadMessage, err)
 	}
 
 	return msg, nil
@@ -161,7 +163,7 @@ func (w *WebsocketAPI) readMessage(ctx context.Context) ([]byte, error) {
 
 func (w *WebsocketAPI) writeMessage(ctx context.Context, m []byte) error {
 	if err := w.conn.WriteMessage(websocket.TextMessage, []byte(m)); err != nil {
-		return err
+		return fmt.Errorf("%w, %s", ErrWriteMessage, err)
 	}
 
 	return nil

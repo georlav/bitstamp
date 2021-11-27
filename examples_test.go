@@ -89,8 +89,10 @@ func ExampleWebsocketAPI() {
 
 		case bitstamp.LiveFullOrderBook:
 			fmt.Println("Message: ", v.Channel, v.Event, v.Data)
+
 		case bitstamp.WebSocketMessage:
 			fmt.Println("Event Message: ", v.Channel, v.Event, v.Data)
+
 		default:
 			fmt.Println("Unknown message: ", msg.RawMessage)
 		}

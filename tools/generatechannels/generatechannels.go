@@ -83,11 +83,13 @@ func main() {
 	)
 
 	func (p Channel) String() string {
-		return channels[p]
+		return getChannels()[p]
 	}
 
-	var channels = map[Channel]string{
+	func getChannels() map[Channel]string {
+		return map[Channel]string{
 			%s
+		}
 	}
 `
 	b, err := format.Source([]byte(fmt.Sprintf(code, enums, enumValues)))

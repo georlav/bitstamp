@@ -1,7 +1,5 @@
-github.com/georlav/httprawmock v0.0.1 h1:BDz+e5lFQuqhZtmR1QHcYL3ObwdnXoMztAfduTMiStg=
-github.com/georlav/httprawmock v0.0.1/go.mod h1:vXRn80ns7Lnuth/d4IaUJ/eHMoAoGI9GIOoaAtPCUX8=
-github.com/georlav/httprawmock v0.0.2 h1:OUo8q3msVtm6oEPTLawkbOmIzFuMc5xLH+6r7EZMrLo=
-github.com/georlav/httprawmock v0.0.2/go.mod h1:vXRn80ns7Lnuth/d4IaUJ/eHMoAoGI9GIOoaAtPCUX8=
+github.com/georlav/httprawmock v0.0.3 h1:Y+XHMM/h/jKm0qgDjrTKPirf8gwdRc4bTyy01wKOOQQ=
+github.com/georlav/httprawmock v0.0.3/go.mod h1:vXRn80ns7Lnuth/d4IaUJ/eHMoAoGI9GIOoaAtPCUX8=
 github.com/go-chi/chi/v5 v5.0.7 h1:rDTPXLDHGATaeHvVlLcR4Qe0zftYethFucbjVQ1PxU8=
 github.com/go-chi/chi/v5 v5.0.7/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
