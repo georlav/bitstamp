@@ -38,10 +38,12 @@ type LiveOrdersChannel struct {
 // LiveOrderBookChannel object to map messages from order_book_[currency_pair] channel
 type LiveOrderBookChannel struct {
 	Data struct {
-		Timestamp      string     `json:"timestamp"`
-		Microtimestamp string     `json:"microtimestamp"`
-		Bids           [][]string `json:"bids"`
-		Asks           [][]string `json:"asks"`
+		Timestamp      string `json:"timestamp"`
+		Microtimestamp string `json:"microtimestamp"`
+		// List of top 100 bids
+		Bids [][]string `json:"bids"`
+		// List of top 100 asks
+		Asks [][]string `json:"asks"`
 	} `json:"data"`
 	Channel string `json:"channel"`
 	Event   string `json:"event"`
@@ -50,10 +52,12 @@ type LiveOrderBookChannel struct {
 // LiveDetailOrderBookChannel object to map messages from detail_order_book_[currency_pair] channel
 type LiveDetailOrderBookChannel struct {
 	Data struct {
-		Timestamp      string     `json:"timestamp"`
-		Microtimestamp string     `json:"microtimestamp"`
-		Bids           [][]string `json:"bids"`
-		Asks           [][]string `json:"asks"`
+		Timestamp      string `json:"timestamp"`
+		Microtimestamp string `json:"microtimestamp"`
+		// List of top 100 bids [price, amount, order id].
+		Bids [][]string `json:"bids"`
+		// List of top 100 asks [price, amount, order id].
+		Asks [][]string `json:"asks"`
 	} `json:"data"`
 	Channel string `json:"channel"`
 	Event   string `json:"event"`
@@ -62,10 +66,12 @@ type LiveDetailOrderBookChannel struct {
 // LiveFullOrderBook object to map messages from diff_order_book_[currency_pair] channel
 type LiveFullOrderBook struct {
 	Data struct {
-		Timestamp      string     `json:"timestamp"`
-		Microtimestamp string     `json:"microtimestamp"`
-		Bids           [][]string `json:"bids"`
-		Asks           [][]string `json:"asks"`
+		Timestamp      string `json:"timestamp"`
+		Microtimestamp string `json:"microtimestamp"`
+		// List of changed bids since last broadcast.
+		Bids [][]string `json:"bids"`
+		// List of changed asks since last broadcast.
+		Asks [][]string `json:"asks"`
 	} `json:"data"`
 	Channel string `json:"channel"`
 	Event   string `json:"event"`

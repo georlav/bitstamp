@@ -94,7 +94,14 @@ func TestGetGBPChannels(t *testing.T) {
 	}
 }
 
-func TestGetLiveTradeChannels(t *testing.T) {
+func TestGetLiveTradeChannel(t *testing.T) {
+	channel := bitstamp.GetLiveTradeChannel(bitstamp.BTCEUR)
+	if expected := "live_trades_btceur"; expected != channel.String() {
+		t.Fatalf("Invalid live trade channel expected `%s` got `%s`", expected, channel)
+	}
+}
+
+func TestGetLiveTradesChannels(t *testing.T) {
 	channels := bitstamp.GetLiveTradeChannels()
 	if len(channels) == 0 {
 		t.Fatal("Failed to retrieve live trade channels")
@@ -102,6 +109,19 @@ func TestGetLiveTradeChannels(t *testing.T) {
 
 	for i := range channels {
 		if !strings.HasPrefix(channels[i].String(), "live_trades_") {
+			t.Fatalf("Invalid live trade channel `%s`", channels[i])
+		}
+	}
+}
+
+func TestGetLiveOrderChannel(t *testing.T) {
+	channels := bitstamp.GetLiveOrderChannels()
+	if len(channels) == 0 {
+		t.Fatal("Failed to retrieve live order channels")
+	}
+
+	for i := range channels {
+		if !strings.HasPrefix(channels[i].String(), "live_orders_") {
 			t.Fatalf("Invalid live trade channel `%s`", channels[i])
 		}
 	}
