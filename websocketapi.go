@@ -123,8 +123,25 @@ func (w *WebsocketAPI) SubscribeToChannels(ctx context.Context, channels ...Chan
 	return nil
 }
 
-// UnSubscribe use this method to unsubscribe from channel(s)
+// UnSubscribeFromChannels use this method to unsubscribe from channel(s)
 func (w *WebsocketAPI) UnSubscribeFromChannels(ctx context.Context, channels ...Channel) error {
+	for i := range channels {
+		m := fmt.Sprintf(`{"event":"bts:unsubscribe","data":{"channel": "%s"}}`, channels[i].String())
+
+		if err := w.conn.WriteMessage(websocket.TextMessage, []byte(m)); err != nil {
+			return fmt.Errorf("failed to unsubscribe from channel %s, %w", channels[i].String(), err)
+		}
+
+		w.channelSubs.Delete(channels[i])
+	}
+
+	return nil
+}
+
+// UnSubscribeFromALLChannels use this method to unsubscribe from all channels you are subscribed
+func (w *WebsocketAPI) UnSubscribeFromALLChannels(ctx context.Context) error {
+	channels := w.GetSubscriptions()
+
 	for i := range channels {
 		m := fmt.Sprintf(`{"event":"bts:unsubscribe","data":{"channel": "%s"}}`, channels[i].String())
 
