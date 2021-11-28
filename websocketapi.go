@@ -138,8 +138,8 @@ func (w *WebsocketAPI) UnSubscribeFromChannels(ctx context.Context, channels ...
 	return nil
 }
 
-// UnSubscribeFromALLChannels use this method to unsubscribe from all channels you are subscribed
-func (w *WebsocketAPI) UnSubscribeFromALLChannels(ctx context.Context) error {
+// UnSubscribeFromAllChannels use this method to unsubscribe from all channels you are subscribed
+func (w *WebsocketAPI) UnSubscribeFromAllChannels(ctx context.Context) error {
 	channels := w.GetSubscriptions()
 
 	for i := range channels {
