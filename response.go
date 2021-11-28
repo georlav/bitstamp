@@ -417,14 +417,14 @@ type GetCryptoTransactionsResponse struct {
 		Currency           string `json:"currency,"`
 		DestinationAddress string `json:"destination_address,"`
 		TXID               string `json:"txid,"`
-		Ammount            string `json:"ammount,"`
+		Amount             string `json:"amount,"`
 		Datetime           string `json:"datetime,"`
 	} `json:"deposits"`
 	Withdrawals []struct {
 		Currency           string `json:"currency,"`
 		DestinationAddress string `json:"destination_address,"`
 		TXID               string `json:"txid,"`
-		Ammount            string `json:"ammount,"`
+		Amount             string `json:"amount,"`
 		Datetime           string `json:"datetime,"`
 	} `json:"withdrawals"`
 }
