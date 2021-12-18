@@ -44,6 +44,8 @@ const (
 	CRVEUR
 	CRVUSD
 	DAIUSD
+	DYDXEUR
+	DYDXUSD
 	ENJEUR
 	ENJUSD
 	ETH2ETH
@@ -61,6 +63,8 @@ const (
 	FETUSD
 	FTTEUR
 	FTTUSD
+	GALAEUR
+	GALAUSD
 	GBPEUR
 	GBPUSD
 	GRTEUR
@@ -92,10 +96,14 @@ const (
 	PAXEUR
 	PAXGBP
 	PAXUSD
+	PERPEUR
+	PERPUSD
 	RGTEUR
 	RGTUSD
 	SANDEUR
 	SANDUSD
+	SGBEUR
+	SGBUSD
 	SKLEUR
 	SKLUSD
 	SLPEUR
@@ -184,6 +192,8 @@ func getPairs() map[Pair]string {
 		CRVEUR:   "crveur",
 		CRVUSD:   "crvusd",
 		DAIUSD:   "daiusd",
+		DYDXEUR:  "dydxeur",
+		DYDXUSD:  "dydxusd",
 		ENJEUR:   "enjeur",
 		ENJUSD:   "enjusd",
 		ETH2ETH:  "eth2eth",
@@ -201,6 +211,8 @@ func getPairs() map[Pair]string {
 		FETUSD:   "fetusd",
 		FTTEUR:   "ftteur",
 		FTTUSD:   "fttusd",
+		GALAEUR:  "galaeur",
+		GALAUSD:  "galausd",
 		GBPEUR:   "gbpeur",
 		GBPUSD:   "gbpusd",
 		GRTEUR:   "grteur",
@@ -232,10 +244,14 @@ func getPairs() map[Pair]string {
 		PAXEUR:   "paxeur",
 		PAXGBP:   "paxgbp",
 		PAXUSD:   "paxusd",
+		PERPEUR:  "perpeur",
+		PERPUSD:  "perpusd",
 		RGTEUR:   "rgteur",
 		RGTUSD:   "rgtusd",
 		SANDEUR:  "sandeur",
 		SANDUSD:  "sandusd",
+		SGBEUR:   "sgbeur",
+		SGBUSD:   "sgbusd",
 		SKLEUR:   "skleur",
 		SKLUSD:   "sklusd",
 		SLPEUR:   "slpeur",
