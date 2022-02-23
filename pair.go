@@ -15,6 +15,8 @@ const (
 	ALGOUSD
 	ALPHAEUR
 	ALPHAUSD
+	AMPEUR
+	AMPUSD
 	AUDIOBTC
 	AUDIOEUR
 	AUDIOUSD
@@ -61,6 +63,8 @@ const (
 	EURUSD
 	FETEUR
 	FETUSD
+	FTMEUR
+	FTMUSD
 	FTTEUR
 	FTTUSD
 	GALAEUR
@@ -163,6 +167,8 @@ func getPairs() map[Pair]string {
 		ALGOUSD:  "algousd",
 		ALPHAEUR: "alphaeur",
 		ALPHAUSD: "alphausd",
+		AMPEUR:   "ampeur",
+		AMPUSD:   "ampusd",
 		AUDIOBTC: "audiobtc",
 		AUDIOEUR: "audioeur",
 		AUDIOUSD: "audiousd",
@@ -209,6 +215,8 @@ func getPairs() map[Pair]string {
 		EURUSD:   "eurusd",
 		FETEUR:   "feteur",
 		FETUSD:   "fetusd",
+		FTMEUR:   "ftmeur",
+		FTMUSD:   "ftmusd",
 		FTTEUR:   "ftteur",
 		FTTUSD:   "fttusd",
 		GALAEUR:  "galaeur",
