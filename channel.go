@@ -59,6 +59,16 @@ const (
 	OrderBookALPHAUSDChannel
 	DetailOrderBookALPHAUSDChannel
 	DiffOrderBookALPHAUSDChannel
+	LiveTradesAMPEURChannel
+	LiveOrdersAMPEURChannel
+	OrderBookAMPEURChannel
+	DetailOrderBookAMPEURChannel
+	DiffOrderBookAMPEURChannel
+	LiveTradesAMPUSDChannel
+	LiveOrdersAMPUSDChannel
+	OrderBookAMPUSDChannel
+	DetailOrderBookAMPUSDChannel
+	DiffOrderBookAMPUSDChannel
 	LiveTradesAUDIOBTCChannel
 	LiveOrdersAUDIOBTCChannel
 	OrderBookAUDIOBTCChannel
@@ -289,6 +299,16 @@ const (
 	OrderBookFETUSDChannel
 	DetailOrderBookFETUSDChannel
 	DiffOrderBookFETUSDChannel
+	LiveTradesFTMEURChannel
+	LiveOrdersFTMEURChannel
+	OrderBookFTMEURChannel
+	DetailOrderBookFTMEURChannel
+	DiffOrderBookFTMEURChannel
+	LiveTradesFTMUSDChannel
+	LiveOrdersFTMUSDChannel
+	OrderBookFTMUSDChannel
+	DetailOrderBookFTMUSDChannel
+	DiffOrderBookFTMUSDChannel
 	LiveTradesFTTEURChannel
 	LiveOrdersFTTEURChannel
 	OrderBookFTTEURChannel
@@ -767,6 +787,16 @@ func getChannels() map[Channel]string {
 		OrderBookALPHAUSDChannel:       "order_book_alphausd",
 		DetailOrderBookALPHAUSDChannel: "detail_order_book_alphausd",
 		DiffOrderBookALPHAUSDChannel:   "diff_order_book_alphausd",
+		LiveTradesAMPEURChannel:        "live_trades_ampeur",
+		LiveOrdersAMPEURChannel:        "live_orders_ampeur",
+		OrderBookAMPEURChannel:         "order_book_ampeur",
+		DetailOrderBookAMPEURChannel:   "detail_order_book_ampeur",
+		DiffOrderBookAMPEURChannel:     "diff_order_book_ampeur",
+		LiveTradesAMPUSDChannel:        "live_trades_ampusd",
+		LiveOrdersAMPUSDChannel:        "live_orders_ampusd",
+		OrderBookAMPUSDChannel:         "order_book_ampusd",
+		DetailOrderBookAMPUSDChannel:   "detail_order_book_ampusd",
+		DiffOrderBookAMPUSDChannel:     "diff_order_book_ampusd",
 		LiveTradesAUDIOBTCChannel:      "live_trades_audiobtc",
 		LiveOrdersAUDIOBTCChannel:      "live_orders_audiobtc",
 		OrderBookAUDIOBTCChannel:       "order_book_audiobtc",
@@ -997,6 +1027,16 @@ func getChannels() map[Channel]string {
 		OrderBookFETUSDChannel:         "order_book_fetusd",
 		DetailOrderBookFETUSDChannel:   "detail_order_book_fetusd",
 		DiffOrderBookFETUSDChannel:     "diff_order_book_fetusd",
+		LiveTradesFTMEURChannel:        "live_trades_ftmeur",
+		LiveOrdersFTMEURChannel:        "live_orders_ftmeur",
+		OrderBookFTMEURChannel:         "order_book_ftmeur",
+		DetailOrderBookFTMEURChannel:   "detail_order_book_ftmeur",
+		DiffOrderBookFTMEURChannel:     "diff_order_book_ftmeur",
+		LiveTradesFTMUSDChannel:        "live_trades_ftmusd",
+		LiveOrdersFTMUSDChannel:        "live_orders_ftmusd",
+		OrderBookFTMUSDChannel:         "order_book_ftmusd",
+		DetailOrderBookFTMUSDChannel:   "detail_order_book_ftmusd",
+		DiffOrderBookFTMUSDChannel:     "diff_order_book_ftmusd",
 		LiveTradesFTTEURChannel:        "live_trades_ftteur",
 		LiveOrdersFTTEURChannel:        "live_orders_ftteur",
 		OrderBookFTTEURChannel:         "order_book_ftteur",
