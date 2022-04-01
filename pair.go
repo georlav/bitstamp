@@ -20,6 +20,8 @@ const (
 	AUDIOBTC
 	AUDIOEUR
 	AUDIOUSD
+	AVAXEUR
+	AVAXUSD
 	AXSEUR
 	AXSUSD
 	BATBTC
@@ -45,6 +47,10 @@ const (
 	CRVBTC
 	CRVEUR
 	CRVUSD
+	CTSIEUR
+	CTSIUSD
+	CVXEUR
+	CVXUSD
 	DAIUSD
 	DYDXEUR
 	DYDXUSD
@@ -76,6 +82,8 @@ const (
 	GUSDUSD
 	HBAREUR
 	HBARUSD
+	IMXEUR
+	IMXUSD
 	KNCBTC
 	KNCEUR
 	KNCUSD
@@ -93,6 +101,8 @@ const (
 	MKRBTC
 	MKREUR
 	MKRUSD
+	NEXOEUR
+	NEXOUSD
 	OMGBTC
 	OMGEUR
 	OMGGBP
@@ -132,6 +142,9 @@ const (
 	USDCUSDT
 	USDTEUR
 	USDTUSD
+	USTEUR
+	USTUSD
+	WBTCBTC
 	XLMBTC
 	XLMEUR
 	XLMGBP
@@ -172,6 +185,8 @@ func getPairs() map[Pair]string {
 		AUDIOBTC: "audiobtc",
 		AUDIOEUR: "audioeur",
 		AUDIOUSD: "audiousd",
+		AVAXEUR:  "avaxeur",
+		AVAXUSD:  "avaxusd",
 		AXSEUR:   "axseur",
 		AXSUSD:   "axsusd",
 		BATBTC:   "batbtc",
@@ -197,6 +212,10 @@ func getPairs() map[Pair]string {
 		CRVBTC:   "crvbtc",
 		CRVEUR:   "crveur",
 		CRVUSD:   "crvusd",
+		CTSIEUR:  "ctsieur",
+		CTSIUSD:  "ctsiusd",
+		CVXEUR:   "cvxeur",
+		CVXUSD:   "cvxusd",
 		DAIUSD:   "daiusd",
 		DYDXEUR:  "dydxeur",
 		DYDXUSD:  "dydxusd",
@@ -228,6 +247,8 @@ func getPairs() map[Pair]string {
 		GUSDUSD:  "gusdusd",
 		HBAREUR:  "hbareur",
 		HBARUSD:  "hbarusd",
+		IMXEUR:   "imxeur",
+		IMXUSD:   "imxusd",
 		KNCBTC:   "kncbtc",
 		KNCEUR:   "knceur",
 		KNCUSD:   "kncusd",
@@ -245,6 +266,8 @@ func getPairs() map[Pair]string {
 		MKRBTC:   "mkrbtc",
 		MKREUR:   "mkreur",
 		MKRUSD:   "mkrusd",
+		NEXOEUR:  "nexoeur",
+		NEXOUSD:  "nexousd",
 		OMGBTC:   "omgbtc",
 		OMGEUR:   "omgeur",
 		OMGGBP:   "omggbp",
@@ -284,6 +307,9 @@ func getPairs() map[Pair]string {
 		USDCUSDT: "usdcusdt",
 		USDTEUR:  "usdteur",
 		USDTUSD:  "usdtusd",
+		USTEUR:   "usteur",
+		USTUSD:   "ustusd",
+		WBTCBTC:  "wbtcbtc",
 		XLMBTC:   "xlmbtc",
 		XLMEUR:   "xlmeur",
 		XLMGBP:   "xlmgbp",

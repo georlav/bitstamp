@@ -2,12 +2,15 @@ name: Golang-CI
 on: [push]
 
 jobs:
-
   lint:
     name: Run Golang-CI Linter
     runs-on: ubuntu-latest
-    steps:
 
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
       - name: Install GO
         uses: actions/setup-go@v2
         with:
@@ -19,4 +22,4 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
-          version: v1.43.0
+          version: v1.45.2

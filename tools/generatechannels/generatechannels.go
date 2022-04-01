@@ -54,6 +54,7 @@ func main() {
 		for j := range channelNames {
 			splitted := strings.Split(channelNames[j], "_")
 			for k := range splitted {
+				// nolint: staticcheck
 				splitted[k] = strings.Title(splitted[k])
 			}
 			splitted = append(splitted, pairs[i].Name)
