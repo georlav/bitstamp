@@ -69,6 +69,16 @@ const (
 	OrderBookAMPUSDChannel
 	DetailOrderBookAMPUSDChannel
 	DiffOrderBookAMPUSDChannel
+	LiveTradesANTEURChannel
+	LiveOrdersANTEURChannel
+	OrderBookANTEURChannel
+	DetailOrderBookANTEURChannel
+	DiffOrderBookANTEURChannel
+	LiveTradesANTUSDChannel
+	LiveOrdersANTUSDChannel
+	OrderBookANTUSDChannel
+	DetailOrderBookANTUSDChannel
+	DiffOrderBookANTUSDChannel
 	LiveTradesAUDIOBTCChannel
 	LiveOrdersAUDIOBTCChannel
 	OrderBookAUDIOBTCChannel
@@ -104,6 +114,16 @@ const (
 	OrderBookAXSUSDChannel
 	DetailOrderBookAXSUSDChannel
 	DiffOrderBookAXSUSDChannel
+	LiveTradesBANDEURChannel
+	LiveOrdersBANDEURChannel
+	OrderBookBANDEURChannel
+	DetailOrderBookBANDEURChannel
+	DiffOrderBookBANDEURChannel
+	LiveTradesBANDUSDChannel
+	LiveOrdersBANDUSDChannel
+	OrderBookBANDUSDChannel
+	DetailOrderBookBANDUSDChannel
+	DiffOrderBookBANDUSDChannel
 	LiveTradesBATBTCChannel
 	LiveOrdersBATBTCChannel
 	OrderBookBATBTCChannel
@@ -369,6 +389,16 @@ const (
 	OrderBookGBPUSDChannel
 	DetailOrderBookGBPUSDChannel
 	DiffOrderBookGBPUSDChannel
+	LiveTradesGODSEURChannel
+	LiveOrdersGODSEURChannel
+	OrderBookGODSEURChannel
+	DetailOrderBookGODSEURChannel
+	DiffOrderBookGODSEURChannel
+	LiveTradesGODSUSDChannel
+	LiveOrdersGODSUSDChannel
+	OrderBookGODSUSDChannel
+	DetailOrderBookGODSUSDChannel
+	DiffOrderBookGODSUSDChannel
 	LiveTradesGRTEURChannel
 	LiveOrdersGRTEURChannel
 	OrderBookGRTEURChannel
@@ -404,6 +434,16 @@ const (
 	OrderBookIMXUSDChannel
 	DetailOrderBookIMXUSDChannel
 	DiffOrderBookIMXUSDChannel
+	LiveTradesINJEURChannel
+	LiveOrdersINJEURChannel
+	OrderBookINJEURChannel
+	DetailOrderBookINJEURChannel
+	DiffOrderBookINJEURChannel
+	LiveTradesINJUSDChannel
+	LiveOrdersINJUSDChannel
+	OrderBookINJUSDChannel
+	DetailOrderBookINJUSDChannel
+	DiffOrderBookINJUSDChannel
 	LiveTradesKNCBTCChannel
 	LiveOrdersKNCBTCChannel
 	OrderBookKNCBTCChannel
@@ -544,6 +584,16 @@ const (
 	OrderBookPERPUSDChannel
 	DetailOrderBookPERPUSDChannel
 	DiffOrderBookPERPUSDChannel
+	LiveTradesRADEURChannel
+	LiveOrdersRADEURChannel
+	OrderBookRADEURChannel
+	DetailOrderBookRADEURChannel
+	DiffOrderBookRADEURChannel
+	LiveTradesRADUSDChannel
+	LiveOrdersRADUSDChannel
+	OrderBookRADUSDChannel
+	DetailOrderBookRADUSDChannel
+	DiffOrderBookRADUSDChannel
 	LiveTradesRGTEURChannel
 	LiveOrdersRGTEURChannel
 	OrderBookRGTEURChannel
@@ -554,6 +604,26 @@ const (
 	OrderBookRGTUSDChannel
 	DetailOrderBookRGTUSDChannel
 	DiffOrderBookRGTUSDChannel
+	LiveTradesRLYEURChannel
+	LiveOrdersRLYEURChannel
+	OrderBookRLYEURChannel
+	DetailOrderBookRLYEURChannel
+	DiffOrderBookRLYEURChannel
+	LiveTradesRLYUSDChannel
+	LiveOrdersRLYUSDChannel
+	OrderBookRLYUSDChannel
+	DetailOrderBookRLYUSDChannel
+	DiffOrderBookRLYUSDChannel
+	LiveTradesRNDREURChannel
+	LiveOrdersRNDREURChannel
+	OrderBookRNDREURChannel
+	DetailOrderBookRNDREURChannel
+	DiffOrderBookRNDREURChannel
+	LiveTradesRNDRUSDChannel
+	LiveOrdersRNDRUSDChannel
+	OrderBookRNDRUSDChannel
+	DetailOrderBookRNDRUSDChannel
+	DiffOrderBookRNDRUSDChannel
 	LiveTradesSANDEURChannel
 	LiveOrdersSANDEURChannel
 	OrderBookSANDEURChannel
@@ -704,6 +774,16 @@ const (
 	OrderBookUSTUSDChannel
 	DetailOrderBookUSTUSDChannel
 	DiffOrderBookUSTUSDChannel
+	LiveTradesVEGAEURChannel
+	LiveOrdersVEGAEURChannel
+	OrderBookVEGAEURChannel
+	DetailOrderBookVEGAEURChannel
+	DiffOrderBookVEGAEURChannel
+	LiveTradesVEGAUSDChannel
+	LiveOrdersVEGAUSDChannel
+	OrderBookVEGAUSDChannel
+	DetailOrderBookVEGAUSDChannel
+	DiffOrderBookVEGAUSDChannel
 	LiveTradesWBTCBTCChannel
 	LiveOrdersWBTCBTCChannel
 	OrderBookWBTCBTCChannel
@@ -862,6 +942,16 @@ func getChannels() map[Channel]string {
 		OrderBookAMPUSDChannel:         "order_book_ampusd",
 		DetailOrderBookAMPUSDChannel:   "detail_order_book_ampusd",
 		DiffOrderBookAMPUSDChannel:     "diff_order_book_ampusd",
+		LiveTradesANTEURChannel:        "live_trades_anteur",
+		LiveOrdersANTEURChannel:        "live_orders_anteur",
+		OrderBookANTEURChannel:         "order_book_anteur",
+		DetailOrderBookANTEURChannel:   "detail_order_book_anteur",
+		DiffOrderBookANTEURChannel:     "diff_order_book_anteur",
+		LiveTradesANTUSDChannel:        "live_trades_antusd",
+		LiveOrdersANTUSDChannel:        "live_orders_antusd",
+		OrderBookANTUSDChannel:         "order_book_antusd",
+		DetailOrderBookANTUSDChannel:   "detail_order_book_antusd",
+		DiffOrderBookANTUSDChannel:     "diff_order_book_antusd",
 		LiveTradesAUDIOBTCChannel:      "live_trades_audiobtc",
 		LiveOrdersAUDIOBTCChannel:      "live_orders_audiobtc",
 		OrderBookAUDIOBTCChannel:       "order_book_audiobtc",
@@ -897,6 +987,16 @@ func getChannels() map[Channel]string {
 		OrderBookAXSUSDChannel:         "order_book_axsusd",
 		DetailOrderBookAXSUSDChannel:   "detail_order_book_axsusd",
 		DiffOrderBookAXSUSDChannel:     "diff_order_book_axsusd",
+		LiveTradesBANDEURChannel:       "live_trades_bandeur",
+		LiveOrdersBANDEURChannel:       "live_orders_bandeur",
+		OrderBookBANDEURChannel:        "order_book_bandeur",
+		DetailOrderBookBANDEURChannel:  "detail_order_book_bandeur",
+		DiffOrderBookBANDEURChannel:    "diff_order_book_bandeur",
+		LiveTradesBANDUSDChannel:       "live_trades_bandusd",
+		LiveOrdersBANDUSDChannel:       "live_orders_bandusd",
+		OrderBookBANDUSDChannel:        "order_book_bandusd",
+		DetailOrderBookBANDUSDChannel:  "detail_order_book_bandusd",
+		DiffOrderBookBANDUSDChannel:    "diff_order_book_bandusd",
 		LiveTradesBATBTCChannel:        "live_trades_batbtc",
 		LiveOrdersBATBTCChannel:        "live_orders_batbtc",
 		OrderBookBATBTCChannel:         "order_book_batbtc",
@@ -1162,6 +1262,16 @@ func getChannels() map[Channel]string {
 		OrderBookGBPUSDChannel:         "order_book_gbpusd",
 		DetailOrderBookGBPUSDChannel:   "detail_order_book_gbpusd",
 		DiffOrderBookGBPUSDChannel:     "diff_order_book_gbpusd",
+		LiveTradesGODSEURChannel:       "live_trades_godseur",
+		LiveOrdersGODSEURChannel:       "live_orders_godseur",
+		OrderBookGODSEURChannel:        "order_book_godseur",
+		DetailOrderBookGODSEURChannel:  "detail_order_book_godseur",
+		DiffOrderBookGODSEURChannel:    "diff_order_book_godseur",
+		LiveTradesGODSUSDChannel:       "live_trades_godsusd",
+		LiveOrdersGODSUSDChannel:       "live_orders_godsusd",
+		OrderBookGODSUSDChannel:        "order_book_godsusd",
+		DetailOrderBookGODSUSDChannel:  "detail_order_book_godsusd",
+		DiffOrderBookGODSUSDChannel:    "diff_order_book_godsusd",
 		LiveTradesGRTEURChannel:        "live_trades_grteur",
 		LiveOrdersGRTEURChannel:        "live_orders_grteur",
 		OrderBookGRTEURChannel:         "order_book_grteur",
@@ -1197,6 +1307,16 @@ func getChannels() map[Channel]string {
 		OrderBookIMXUSDChannel:         "order_book_imxusd",
 		DetailOrderBookIMXUSDChannel:   "detail_order_book_imxusd",
 		DiffOrderBookIMXUSDChannel:     "diff_order_book_imxusd",
+		LiveTradesINJEURChannel:        "live_trades_injeur",
+		LiveOrdersINJEURChannel:        "live_orders_injeur",
+		OrderBookINJEURChannel:         "order_book_injeur",
+		DetailOrderBookINJEURChannel:   "detail_order_book_injeur",
+		DiffOrderBookINJEURChannel:     "diff_order_book_injeur",
+		LiveTradesINJUSDChannel:        "live_trades_injusd",
+		LiveOrdersINJUSDChannel:        "live_orders_injusd",
+		OrderBookINJUSDChannel:         "order_book_injusd",
+		DetailOrderBookINJUSDChannel:   "detail_order_book_injusd",
+		DiffOrderBookINJUSDChannel:     "diff_order_book_injusd",
 		LiveTradesKNCBTCChannel:        "live_trades_kncbtc",
 		LiveOrdersKNCBTCChannel:        "live_orders_kncbtc",
 		OrderBookKNCBTCChannel:         "order_book_kncbtc",
@@ -1337,6 +1457,16 @@ func getChannels() map[Channel]string {
 		OrderBookPERPUSDChannel:        "order_book_perpusd",
 		DetailOrderBookPERPUSDChannel:  "detail_order_book_perpusd",
 		DiffOrderBookPERPUSDChannel:    "diff_order_book_perpusd",
+		LiveTradesRADEURChannel:        "live_trades_radeur",
+		LiveOrdersRADEURChannel:        "live_orders_radeur",
+		OrderBookRADEURChannel:         "order_book_radeur",
+		DetailOrderBookRADEURChannel:   "detail_order_book_radeur",
+		DiffOrderBookRADEURChannel:     "diff_order_book_radeur",
+		LiveTradesRADUSDChannel:        "live_trades_radusd",
+		LiveOrdersRADUSDChannel:        "live_orders_radusd",
+		OrderBookRADUSDChannel:         "order_book_radusd",
+		DetailOrderBookRADUSDChannel:   "detail_order_book_radusd",
+		DiffOrderBookRADUSDChannel:     "diff_order_book_radusd",
 		LiveTradesRGTEURChannel:        "live_trades_rgteur",
 		LiveOrdersRGTEURChannel:        "live_orders_rgteur",
 		OrderBookRGTEURChannel:         "order_book_rgteur",
@@ -1347,6 +1477,26 @@ func getChannels() map[Channel]string {
 		OrderBookRGTUSDChannel:         "order_book_rgtusd",
 		DetailOrderBookRGTUSDChannel:   "detail_order_book_rgtusd",
 		DiffOrderBookRGTUSDChannel:     "diff_order_book_rgtusd",
+		LiveTradesRLYEURChannel:        "live_trades_rlyeur",
+		LiveOrdersRLYEURChannel:        "live_orders_rlyeur",
+		OrderBookRLYEURChannel:         "order_book_rlyeur",
+		DetailOrderBookRLYEURChannel:   "detail_order_book_rlyeur",
+		DiffOrderBookRLYEURChannel:     "diff_order_book_rlyeur",
+		LiveTradesRLYUSDChannel:        "live_trades_rlyusd",
+		LiveOrdersRLYUSDChannel:        "live_orders_rlyusd",
+		OrderBookRLYUSDChannel:         "order_book_rlyusd",
+		DetailOrderBookRLYUSDChannel:   "detail_order_book_rlyusd",
+		DiffOrderBookRLYUSDChannel:     "diff_order_book_rlyusd",
+		LiveTradesRNDREURChannel:       "live_trades_rndreur",
+		LiveOrdersRNDREURChannel:       "live_orders_rndreur",
+		OrderBookRNDREURChannel:        "order_book_rndreur",
+		DetailOrderBookRNDREURChannel:  "detail_order_book_rndreur",
+		DiffOrderBookRNDREURChannel:    "diff_order_book_rndreur",
+		LiveTradesRNDRUSDChannel:       "live_trades_rndrusd",
+		LiveOrdersRNDRUSDChannel:       "live_orders_rndrusd",
+		OrderBookRNDRUSDChannel:        "order_book_rndrusd",
+		DetailOrderBookRNDRUSDChannel:  "detail_order_book_rndrusd",
+		DiffOrderBookRNDRUSDChannel:    "diff_order_book_rndrusd",
 		LiveTradesSANDEURChannel:       "live_trades_sandeur",
 		LiveOrdersSANDEURChannel:       "live_orders_sandeur",
 		OrderBookSANDEURChannel:        "order_book_sandeur",
@@ -1497,6 +1647,16 @@ func getChannels() map[Channel]string {
 		OrderBookUSTUSDChannel:         "order_book_ustusd",
 		DetailOrderBookUSTUSDChannel:   "detail_order_book_ustusd",
 		DiffOrderBookUSTUSDChannel:     "diff_order_book_ustusd",
+		LiveTradesVEGAEURChannel:       "live_trades_vegaeur",
+		LiveOrdersVEGAEURChannel:       "live_orders_vegaeur",
+		OrderBookVEGAEURChannel:        "order_book_vegaeur",
+		DetailOrderBookVEGAEURChannel:  "detail_order_book_vegaeur",
+		DiffOrderBookVEGAEURChannel:    "diff_order_book_vegaeur",
+		LiveTradesVEGAUSDChannel:       "live_trades_vegausd",
+		LiveOrdersVEGAUSDChannel:       "live_orders_vegausd",
+		OrderBookVEGAUSDChannel:        "order_book_vegausd",
+		DetailOrderBookVEGAUSDChannel:  "detail_order_book_vegausd",
+		DiffOrderBookVEGAUSDChannel:    "diff_order_book_vegausd",
 		LiveTradesWBTCBTCChannel:       "live_trades_wbtcbtc",
 		LiveOrdersWBTCBTCChannel:       "live_orders_wbtcbtc",
 		OrderBookWBTCBTCChannel:        "order_book_wbtcbtc",
