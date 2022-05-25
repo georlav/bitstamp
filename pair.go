@@ -17,6 +17,8 @@ const (
 	ALPHAUSD
 	AMPEUR
 	AMPUSD
+	ANTEUR
+	ANTUSD
 	AUDIOBTC
 	AUDIOEUR
 	AUDIOUSD
@@ -24,6 +26,8 @@ const (
 	AVAXUSD
 	AXSEUR
 	AXSUSD
+	BANDEUR
+	BANDUSD
 	BATBTC
 	BATEUR
 	BATUSD
@@ -77,6 +81,8 @@ const (
 	GALAUSD
 	GBPEUR
 	GBPUSD
+	GODSEUR
+	GODSUSD
 	GRTEUR
 	GRTUSD
 	GUSDUSD
@@ -84,6 +90,8 @@ const (
 	HBARUSD
 	IMXEUR
 	IMXUSD
+	INJEUR
+	INJUSD
 	KNCBTC
 	KNCEUR
 	KNCUSD
@@ -112,8 +120,14 @@ const (
 	PAXUSD
 	PERPEUR
 	PERPUSD
+	RADEUR
+	RADUSD
 	RGTEUR
 	RGTUSD
+	RLYEUR
+	RLYUSD
+	RNDREUR
+	RNDRUSD
 	SANDEUR
 	SANDUSD
 	SGBEUR
@@ -144,6 +158,8 @@ const (
 	USDTUSD
 	USTEUR
 	USTUSD
+	VEGAEUR
+	VEGAUSD
 	WBTCBTC
 	XLMBTC
 	XLMEUR
@@ -182,6 +198,8 @@ func getPairs() map[Pair]string {
 		ALPHAUSD: "alphausd",
 		AMPEUR:   "ampeur",
 		AMPUSD:   "ampusd",
+		ANTEUR:   "anteur",
+		ANTUSD:   "antusd",
 		AUDIOBTC: "audiobtc",
 		AUDIOEUR: "audioeur",
 		AUDIOUSD: "audiousd",
@@ -189,6 +207,8 @@ func getPairs() map[Pair]string {
 		AVAXUSD:  "avaxusd",
 		AXSEUR:   "axseur",
 		AXSUSD:   "axsusd",
+		BANDEUR:  "bandeur",
+		BANDUSD:  "bandusd",
 		BATBTC:   "batbtc",
 		BATEUR:   "bateur",
 		BATUSD:   "batusd",
@@ -242,6 +262,8 @@ func getPairs() map[Pair]string {
 		GALAUSD:  "galausd",
 		GBPEUR:   "gbpeur",
 		GBPUSD:   "gbpusd",
+		GODSEUR:  "godseur",
+		GODSUSD:  "godsusd",
 		GRTEUR:   "grteur",
 		GRTUSD:   "grtusd",
 		GUSDUSD:  "gusdusd",
@@ -249,6 +271,8 @@ func getPairs() map[Pair]string {
 		HBARUSD:  "hbarusd",
 		IMXEUR:   "imxeur",
 		IMXUSD:   "imxusd",
+		INJEUR:   "injeur",
+		INJUSD:   "injusd",
 		KNCBTC:   "kncbtc",
 		KNCEUR:   "knceur",
 		KNCUSD:   "kncusd",
@@ -277,8 +301,14 @@ func getPairs() map[Pair]string {
 		PAXUSD:   "paxusd",
 		PERPEUR:  "perpeur",
 		PERPUSD:  "perpusd",
+		RADEUR:   "radeur",
+		RADUSD:   "radusd",
 		RGTEUR:   "rgteur",
 		RGTUSD:   "rgtusd",
+		RLYEUR:   "rlyeur",
+		RLYUSD:   "rlyusd",
+		RNDREUR:  "rndreur",
+		RNDRUSD:  "rndrusd",
 		SANDEUR:  "sandeur",
 		SANDUSD:  "sandusd",
 		SGBEUR:   "sgbeur",
@@ -309,6 +339,8 @@ func getPairs() map[Pair]string {
 		USDTUSD:  "usdtusd",
 		USTEUR:   "usteur",
 		USTUSD:   "ustusd",
+		VEGAEUR:  "vegaeur",
+		VEGAUSD:  "vegausd",
 		WBTCBTC:  "wbtcbtc",
 		XLMBTC:   "xlmbtc",
 		XLMEUR:   "xlmeur",

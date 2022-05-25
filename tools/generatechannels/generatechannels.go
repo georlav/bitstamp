@@ -10,6 +10,7 @@ import (
 	"log"
 	"sort"
 	"strings"
+	"unicode"
 
 	"github.com/georlav/bitstamp"
 )
@@ -30,6 +31,8 @@ var channelNames = []string{
 }
 
 func main() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
 	c := bitstamp.NewHTTPAPI()
 	results, err := c.GetTradingPairsInfo(context.Background())
 	if err != nil {
@@ -38,6 +41,10 @@ func main() {
 
 	var pairs []pair
 	for i := range results {
+		if unicode.IsDigit(rune(results[i].Name[0])) {
+			continue
+		}
+
 		pairs = append(pairs, pair{
 			Name:    strings.ReplaceAll(results[i].Name, "/", ""),
 			URLName: results[i].URLSymbol,
@@ -99,6 +106,6 @@ func main() {
 	}
 
 	if err := ioutil.WriteFile("channel.go", b, 0664); err != nil {
-		log.Fatal("Failed to create channel enum file")
+		log.Fatalf("Failed to create channel enum file. %s", err)
 	}
 }
